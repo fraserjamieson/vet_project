@@ -8,4 +8,3 @@ class Animal:
         self.notes = notes
         self.id= id
     
-    
