@@ -9,7 +9,7 @@
 -- CREATE TABLE animals (
 --     id SERIAL PRIMARY KEY,
 --     name VARCHAR(255),
---     DOB VARCHAR(255),
+--     DOB INT ,
 --     type VARCHAR(255),
 --     contact_details INT,
 --     notes TEXT,
