@@ -11,7 +11,7 @@ CREATE TABLE animals (
     name VARCHAR(255),
     DOB INT,
     type VARCHAR(255),
-    contact_details INT,
+    contact_details VARCHAR(255),
     notes TEXT,
     vetenarian_id INT REFERENCES vetenarians (id)
 );

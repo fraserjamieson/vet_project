@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 
 from models.vets import Vetenarian
+from models.animals import Animal 
 
 # create 
 def save(vet_to_save):
@@ -10,16 +11,61 @@ def save(vet_to_save):
     vet_to_save.id = results[0]['id']
     return vet_to_save 
 
-# read one
-
-# read all
-
 # select
+
+def select(id):
+    vetenarian = None
+    sql = "SELECT * FROM vetenarians WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        vet = Vetenarian(result['name'], result['id'] )
+    return vetenarian
 
 # # select all 
 
+def select_all():
+    vetenarians = []
+
+    sql = "SELECT * FROM vetenarians"
+    results = run_sql(sql)
+
+    for row in results:
+        vetenarian = Vetenarian(row['name'], row['id'] )
+        vetenarians.append(vetenarian)
+    return vetenarians
+
 # # delete
+
+def delete(id):
+    sql = "DELETE FROM vetenarian WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 # # delete all
 
+def delete_all():
+    sql = "DELETE FROM vetenarians"
+    run_sql(sql)
+
 # # update (one)
+
+def update(vetenarian):
+    sql = "UPDATE vetenarians SET (name) = (%s) WHERE id = %s"
+    values = [vetenarian.name, vetenarian.id]
+    run_sql(sql, values)
+
+# selects animal with specifically designated vetenarian
+
+def animals(vetenarian):
+    animals = []
+
+    sql = "SELECT * FROM animals WHERE vetenarian_id = %s"
+    values = [vetenarian.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        animal = Animal(row['name'], row['DOB'], row['type'], row['contact_details'], row['notes'], row['id'])   #--------REMOVE Vetenarian_ID to fix formatting issue in table
+        animals.append(animal)
+    return animals

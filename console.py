@@ -10,8 +10,10 @@ vet_repository.save(burt)
 muran = Vetenarian("Muran")
 vet_repository.save(muran)
 
-# animal_1 = Animal("Zero", 2018, "Dog", "01382", "most recent visit: Visited to recieve yearly jab")
+zero = Animal("Zero", 2018, "Dog", "01382", "Visited to recieve yearly jab")
+animal_repository.save(zero)
 
-# animal_2 = Animal("Beethoven", 2018, "Dog", 1131, "most recent visit: Poor thing had soft case of the runs.  Was displaying troubling symptons of something more serious, but aptly treated with relevant antibiotics")
+beethoven = Animal("Beethoven", 2018, "Dog", "01382", "Poor thing had soft case of the runs.  Was displaying troubling symptons of something more serious, but aptly treated with relevant antibiotics")
+animal_repository.save(beethoven)
 
 pdb.set_trace()
