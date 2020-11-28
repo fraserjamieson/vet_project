@@ -1,5 +1,5 @@
 import unittest
-from models.animal import Animal
+from models.animals import Animal
 
 class TestAnimal(unittest.TestCase):
     def setUp(self):
