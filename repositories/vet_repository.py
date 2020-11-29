@@ -4,6 +4,7 @@ from models.vets import Vetenarian
 from models.animals import Animal 
 
 # create 
+
 def save(vet_to_save):
     sql = "INSERT INTO vetenarians (name) VALUES (%s) RETURNING id"
     values = [vet_to_save.name]
@@ -20,7 +21,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        vet = Vetenarian(result['name'], result['id'] )
+        vetenarian = Vetenarian(result['name'], result['id'] )
     return vetenarian
 
 # # select all 

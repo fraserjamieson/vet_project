@@ -1,0 +1,30 @@
+  body {
+      font-family: "Helvetica", arial, sans-serif; font-size: 16px;
+    }
+  .header {
+    font: 30px bold;
+    text-align: center;
+    font-family: 'Fugaz One', cursive;
+  }
+  
+  .container {
+    display: flex;
+    padding-top: 20px;
+    justify-content: space-between;
+  }
+
+  .animal-box {
+    background-color: beige;
+    border: 2px solid black;
+    padding: 5px;
+    text-align: left;
+    line-height: 15px;
+    border-radius: 10px;
+    margin: auto;
+  } 
+
+  .animal-box > p {
+    padding: 5px;
+
+  } 
+

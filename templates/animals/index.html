@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<header class="header">ANIMALS</header> 
+    <div class="container">
+            {% for animal in all_animals %}
+
+                <div class="animal-box">
+
+                    <p>{{ animal.name }}</p>
+                    <p>{{ animal.dob }}</p>
+                    <p>{{ animal.type }}</p>
+                    <p>{{ animal.contact_details }}</p>
+                    <p>{{ animal.notes }}</p>
+
+                </div>
+
+            {% endfor %}
+    </div>
+    
+{% endblock %}

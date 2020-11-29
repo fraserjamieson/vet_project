@@ -9,9 +9,9 @@ CREATE TABLE vetenarians (
 CREATE TABLE animals (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    DOB INT,
+    dob VARCHAR(255),
     type VARCHAR(255),
     contact_details VARCHAR(255),
     notes TEXT,
-    vetenarian_id INT REFERENCES vetenarians (id)
+    vetenarian_id INT REFERENCES vetenarians(id)
 );
