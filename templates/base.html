@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
-  <title>Vet</title>
-</head>
-<body>
-  <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/animals">Animals</a></li>
-        <li><a href="/animals/new">Register new animal</a></li>
-      </ul>
-    </nav>
-  </header>
-    {% block content %}
-    <div class="container"></div>
-    {% endblock %}
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <title>Vet Management System</title>
+  </head>
+
+  <body>
+
+    <header>
+
+        <h1 class="animal-header">HALO</h1>
+        
+          <div class="w3-bar w3-black">
+            <a href="/" class="w3-bar-item w3-button">Home</a>
+            <a href="/animals" class="w3-bar-item w3-button">Animals</a>
+            <a href="/animals/new" class="w3-bar-item w3-button">Register new animal</a>
+          </div>
+
+    </header>
+
+        {% block content %}
+        <div class="container">
+        {% endblock %}
+        </div>
+
+      {% block home %}
+      {% endblock %}
+  </body>
 </html>

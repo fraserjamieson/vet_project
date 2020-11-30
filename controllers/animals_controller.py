@@ -14,26 +14,27 @@ def animals():
     animals = animal_repository.select_all()
     return render_template("animals/index.html", all_animals = animals)
 
+# NEW
+
 @animals_blueprint.route("/animals/new")
 def new_animal():
     vetenarians = vet_repository.select_all()
-    return render_template("animals/new.html")
+    animals = animal_repository.select_all()
+    return render_template("animals/new.html", all_animals = animals, all_vetenarians = vetenarians)
 
-# CREATE new animal
-
-# POST '/animals'
+# CREATE 
 
 @animals_blueprint.route("/animals/new", methods=['POST'])
 def create_animal():
-    name = request.form['name']
-    dob = request.form['dob']
-    type = request.form['type']
-    contact_details = request.form['contact_details']
-    notes = request.form['notes']
-    vetenarian = vet_repository.select(request.form['vetenarian_id'])
-    animal = Animal(name, dob, type, contact_details, vetenarian, notes)
+    name = request.form["name"]
+    dob = request.form["dob"]
+    animal_type = request.form["animal_type"]
+    contact_details = request.form["contact_details"]
+    notes = request.form["notes"]
+    vetenarian = vet_repository.select(request.form["vetenarian_id"])
+    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian)
     animal_repository.save(animal)
-    return redirect('/animals/success') #--- change this to new SUCCESS page!
+    return redirect("/animals") 
 
 # SHOW's new animal submission success
 
@@ -44,18 +45,17 @@ def show_animal(id):
     animal = animal_repository.select(id)
     return render_template('animals/success.html', animal = animal)
 
-# EDIT animal
+# EDIT 
 
 @animals_blueprint.route("/animals/<id>/edit", methods=['GET'])
-def edit_notes(id):
+def edit_animal(id):
     animal = animal_repository.select(id)
-    vetenarians = vet_repository.select_all()
-    return render_template('animals/edit.html', animal = animal, all_vetenarians = vetenarians)
+    return render_template('animals/edit.html', animal = animal)
 
-# DELETE animal
+# DELETE
 
 # FORM with POST method to delete animal.
-@animals_blueprint.route("/<id>/delete", methods=['GET'])
+@animals_blueprint.route("/<id>/delete", methods=['POST'])
 def delete_animal(id):
     animal_repository.delete(id)
-    return redirect('/animals/index')
+    return redirect('/animals/')

@@ -11,72 +11,95 @@
       height: 100%;
     }
 
-  .header {
-    font: 30px bold;
-    text-align: center;
-    font-family: 'Fugaz One', cursive;
-  }
-  
-  .animal-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #FFC0CB;
-    width: 900px;
-    margin: 20px auto;
-    flex: 1 1 120px;
-    align-items: center;
-    column-gap: 20px;
-    padding: 10px;
-  }
+    /* BASE */
 
-  .animal-items {
-    background-color: #AFEEEE;
-    border: 2px solid black;
-    margin-top: 20px;
-    padding: 10px;
-    flex: 1 1 120px;
-    text-align: left;
-    line-height: 10px;
-    border-radius: 5px;
-  } 
+          /* HEADER */
 
-  .animal-items > div {
-    padding: 5px;
-  }
+          .animal-header {
+            font: 800;
+          }
 
-  .notes {
-    overflow: scroll;
-    line-height: normal;
-    background-color: #E0FFFF;
-  }
+          li a {
+            display: block;
+            width: 100px;
+            background-color: orange;
+            list-style-type: none;
+            margin: 0;
+            padding: 5px;
+          }
+
+          .header {
+            font: 30px bold;
+            text-align: center;
+            font-family: 'Fugaz One', cursive;
+          }
+
+    /* ANIMALS */
+          
+          /* BODY  */
+
+          .animal-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #FFC0CB;
+            width: 900px;
+            margin: 20px auto;
+            flex: 1 1 120px;
+            align-items: center;
+            column-gap: 20px;
+            padding: 10px;
+          }
+
+          .animal-items {
+            background-color: #AFEEEE;
+            border: 2px solid black;
+            margin-top: 20px;
+            padding: 10px;
+            flex: 1 1 120px;
+            text-align: left;
+            line-height: 10px;
+            border-radius: 5px;
+          } 
+
+          .animal-items > div {
+            padding: 10px;
+            resize: both;
+          }
+
+          .notes {
+            overflow: auto;
+            line-height: normal;
+            background-color: #E0FFFF;
+            -webkit-text-stroke-width: thick;
+          }
 
   /* REGISTER ANIMAL */
 
-  /* HEADER */
+          /* HEADER */
 
-  .submit-animal {
-    font-family: 'Fugaz One', cursive;
-    text-align: center;
-    padding-top: 20px;
-  }
+          .register-header {
+            font-family: 'Fugaz One', cursive;
+            text-align: center;
+            padding-top: 20px;
+          }
 
-  /* FORM BODY */
+          /* FORM BODY */
 
-  .form-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    background-color: #AFEEEE;
-    position: relative;
-    margin: 0 auto;
-  }
-  
-  .form-submission {
-    margin: 60px auto;
-    background-color: #efefef;
-    padding: 60px 120px 80px 120px;
-    box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-    position: absolute;
-  }
+          .form-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            background-color: #AFEEEE;
+            position: relative;
+            margin: 0 auto;
+          }
+          
+          .form-submission {
+            margin: 60px auto;
+            background-color: #efefef;
+            padding: 60px 120px 80px 120px;
+            box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+            position: absolute;
+          }
