@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<header class="header">ANIMALS</header> 
-    <div class="container">
+    <header class="header">ANIMALS</header> 
+    
+        <div class="animal-container">
             {% for animal in all_animals %}
 
-                <div class="animal-box">
+                <div class="animal-items">
 
-                    <p>{{ animal.name }}</p>
-                    <p>{{ animal.dob }}</p>
-                    <p>{{ animal.type }}</p>
-                    <p>{{ animal.contact_details }}</p>
-                    <p>{{ animal.notes }}</p>
+                    <div>{{ animal.name }}</a></div>
+                    <div>{{ animal.dob }}</div>
+                    <div>{{ animal.type }}</div>
+                    <div>{{ animal.contact_details }}</div>
+                    <div class="notes">{{ animal.notes }}</div>
+                    <div>{{ animal.vet_id }}</div>
 
                 </div>
 
-            {% endfor %}
-    </div>
-    
+            {% endfor %}  
+        </div>  
+
 {% endblock %}

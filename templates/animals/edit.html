@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block home %}
+
+<form action="/animals/{{animal.id}}" method="post">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="{{animal.name}}" required autofocus>
+    </div>
+  
+    <div>
+      <label for="dob">D/O/B:</label>
+      <input type="number" id="dob" name="dob" value="{{animal.dob}}" required>
+    </div>
+  
+    <div>
+      <label for="type">Type:</label>
+      <input type="text" id="type" name="type" value="{{animal.type}}" required>
+    </div>
+
+    <div>
+        <label for="contact_details">contact_details:</label>
+        <input type="text" id="contact_details" name="contact_details" value="{{animal.contact_details}}" required>
+    </div>
+
+    <div>
+        <label for="notes">Notes:</label>
+        <input type="text" id="notes" name="notes" value="{{animal.notes}}" required>
+    </div>
+  
+    <div>
+      <label for="vetenarian">Assigned Vet:</label>
+      <select id="vetenarian" name="vetenarian_id">
+        {% for vetenarian in all_vetenarians %}
+          <p>
+            {{ vetenarian.name }}
+          </p>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div>
+        <label for="vetenarian">vetenarian:</label>
+        <select id="vetenarian" name="vetenarian_id">
+          {% for vetenarian in all_vetenarians %}
+            <option value="{{ vetenarian.id }}"
+              {% if animal.vetenarian.id == vetenarian.id %} selected="selected"{% endif %}>
+              {{ vetenarian.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+  
+    <button type="submit">Update entry</button>
+  
+  </form>
+
+    <!-- <form class="delete-form" action="/animals/{{animal.id}}/delete" method="POST"> 
+                                
+        <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button> 
+
+    </form> -->
+
+{% endblock %}

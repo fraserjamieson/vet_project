@@ -7,19 +7,20 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
-  <title>Halo Pet</title>
+  <title>Vet</title>
 </head>
 <body>
   <header>
     <nav>
       <ul class="menu">
         <li><a href="/">Home</a></li>
-        <li><a href="/animals">Current Animals</a></li>
-        <li><a href="/animals/new">Submit Animal</a></li>
+        <li><a href="/animals">Animals</a></li>
+        <li><a href="/animals/new">Register new animal</a></li>
       </ul>
     </nav>
   </header>
     {% block content %}
+    <div class="container"></div>
     {% endblock %}
   </div>
 </body>
