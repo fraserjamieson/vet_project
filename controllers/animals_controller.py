@@ -16,14 +16,14 @@ animals_blueprint = Blueprint("animals", __name__)
 @animals_blueprint.route("/animals", methods=['GET'])
 def animals():
     animals = animal_repository.select_all()
-    return render_template("/animals/index.html", all_animals = animals)
+    customers = customer_repository.select_all()
+    return render_template("/animals/index.html", all_animals = animals, all_customers = customers)
 
-# NEW
+# NEW animal
 
 @animals_blueprint.route("/animals/new", methods=['GET'])
 def new_animal():
     vetenarians = vet_repository.select_all()
-    animals = animal_repository.select_all()
     customers = customer_repository.select_all()
     return render_template("/animals/new.html", all_animals = animals, all_vetenarians = vetenarians, all_customers = customers)
 
@@ -38,22 +38,12 @@ def create_animal():
     animal_type = request.form["animal_type"]
     contact_details = request.form["contact_details"]
     notes = request.form["notes"]
+    customer = customer_repository.update(request.form["customer_id"])
     vetenarian = vet_repository.select(request.form["vetenarian_id"])
-    customer = customer_repository.select(request.form["customer_id"])
     animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian, customer)
     animal_repository.save(animal)
     customer_repository.save(customer)
     return redirect("/animals") 
-
-# SHOW 
-
-# list of animals owned by each vet
-
-# @animals_blueprint.route("/animals/<id>", methods=['GET'])
-# def show_animal(id):
-#     vet_animals = animal_repository.display_vet_animals(id)
-#     animal = animal_repository.select(id)
-#     return render_template('/animals/show.html', animal = animal, vetenarian = vet_animals)
 
 # EDIT 
 

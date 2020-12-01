@@ -8,17 +8,11 @@ import repositories.customer_repository as customer_repository
 
 vets_blueprint = Blueprint("vets", __name__) 
 
-# INDEX
+# INDEX 
+# 
+# list of vets
 
-# @vets_blueprint.route("/vets", methods=['GET'])
-# def vets():  
-#     vetenarians = vet_repository.select_all()
-#     vet_animals = vet_repository.vet_animals()
-#     animals = animal_repository.select_all()
-#     customers = customer_repository.select_all()
-#     return render_template("/vets/index.html", all_vetenarians = vetenarians, all_animals = animals, all_customers = customers, all_vets_animals = vets_animals)
-
-# SHOW 
+# This show animals cared for, but has bug.  need to show animals cared for by SPECIFIC vet
 
 @vets_blueprint.route("/vets", methods=['GET'])
 def vets():
@@ -27,16 +21,19 @@ def vets():
     customers = customer_repository.select_all()
     return render_template('/vets/index.html', all_vetenarians = vetenarians, all_customers = customers, all_animals = animals)
 
-# SHOW 
+# SHOW customers
 
-# list of animals cared for by each vet
+# @vets_blueprint.route("/vets/customer", methods=['GET'])
+# def customers(id):
+#     animals = animal_repository.select(id)
+#     customer = customer_repository.select(id)
+#     customer_animals = animal_repository.display_vet_animals(id)
+#     return render_template('/vets/customer.html', animals = animals, customer_animals = customer_animals, customer = customer)
 
-@animals_blueprint.route("/vets/<id>", methods=['GET'])
-def show_animals(id):
-    animals = animal_repository.select(id)
-    customer = customer_repository.select(id)
-    customer_animals = animal_repository.display_vet_animals(id)
-    return render_template('/vets/customer.html', animals = animals, customer_animals = customer_animals, customer = customer)
+# @vets_blueprint.route("/vets/customer", methods=['GET'])
+# def vets():  
+#     customers = customer_repository.select_all()
+#     return render_template("/vets/customer.html", all_customers = customers)
 
 # DELETE
 
@@ -49,16 +46,18 @@ def delete_animal(id):
 
 # NEW customer
 
-@vets_blueprint.route("/vets/customer", methods=['GET'])
-def new_customer():
+# Get customer info
 
+@vets_blueprint.route("/vets/new", methods=['GET'])
+def new_customer():
+    vetenarians = vet_repository.select_all()
     return render_template('/vets/new.html', )
 
 # CREATE 
 
 # REGISTER new customer
 
-@vets_blueprint.route("/vets/customer", methods=['POST'])
+@vets_blueprint.route("/vets/new", methods=['POST'])
 def create_customer():
     name = request.form["name"]
     vetenarian = vet_repository.select(request.form["vetenarian_id"])
