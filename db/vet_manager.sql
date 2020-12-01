@@ -15,3 +15,4 @@ CREATE TABLE animals (
     notes TEXT,
     vetenarian_id INT REFERENCES vetenarians(id)
 );
+

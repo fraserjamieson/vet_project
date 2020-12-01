@@ -2,22 +2,27 @@
 {% block content %}
 
     <header class="header">ANIMALS</header> 
-    
-        <section class="animal-container">
-            {% for animal in all_animals %}
+            <section class="vet-container">
+                {% for animal in all_animals %}
 
-                <div class="animal-items">
+                    <div class="animal-items">
 
-                    <div>Name: {{ animal.name }}</a></div>
-                    <div>DoB: {{ animal.dob }}</div>
-                    <div>Type: {{ animal.animal_type }}</div>
-                    <div>Owner Contact Info{{ animal.contact_details }}</div>
-                    <div class="notes">Notes: {{ animal.notes }}</div>
-                    <div>Residing: {{ animal.vetenarian }}</div>
+                        <div>Name: {{ animal.name }}</a></div>
+                        <div>DoB: {{ animal.dob }}</div>
+                        <div>Type: {{ animal.animal_type }}</div>
+                        <div>Owner Contact Info{{ animal.contact_details }}</div>
+                        <div class="notes">Notes: {{ animal.notes }}</div>
+                        <div>Residing: {{ animal.vetenarian }}</div><br>
+                        <form action="/animals/{{ animal.id }}/edit" method="GET">
+                            <input type="submit" value="Change Details">
+                        </form> 
+                        <form action="/animals/{{ animal.id }}/delete" method="POST">
+                            <input type="submit" value="Delete">
+                        </form> 
 
-                </div>
+                    </div>
 
-            {% endfor %}  
-        </section>  
+                {% endfor %}  
+            </section>  
 
 {% endblock %}

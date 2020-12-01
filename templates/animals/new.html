@@ -2,7 +2,9 @@
 {% block content %}
 
 <h1 class="register-header">REGISTER ANIMAL</h1> 
+
   <div class="form-body">
+
     <form action="/animals/new" method="post" class="form-submission">
       
       <div>
@@ -11,7 +13,7 @@
       </div>
     
       <div>
-        <label for="dob">Date of birth</label>
+        <label for="dob">D/O/B</label>
         <input type="date" id="dob" name="dob" required>
       </div>
     
@@ -42,6 +44,7 @@
       <button type="submit">Submit</button>
     
     </form>
+
   </div>
 
 {% endblock %}

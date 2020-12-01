@@ -62,3 +62,23 @@ def update(animal):
     values = [animal.name, animal.dob, animal.animal_type, animal.contact_details, animal.notes, animal.vetenarian.id, animal.id]
     print(values)
     run_sql(sql, values)
+
+def display_vet_animals(id):
+    vet_animals = []
+    sql = """SELECT *
+            FROM animals
+            WHERE vetenarian_id = %s"""
+    values = [id]
+    results = run_sql(sql, vaules)
+    vetenarian = vet_repository.select(id)
+    for result in results:
+        animals =  Animal(
+        result ["name"],
+        result ["dob"], 
+        result ["animal_type"], 
+        result ["contact_details"],
+        result["notes"],
+        vetenarian,
+        result ["id"])
+        vet_animals.append(animals)
+    return vet_animals

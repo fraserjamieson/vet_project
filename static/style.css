@@ -34,13 +34,17 @@
             font-family: 'Fugaz One', cursive;
           }
 
+          .home-container {
+            border: 5px dotted orange;
+          }
+
     /* ANIMALS */
           
           /* BODY  */
 
-          .animal-container {
+          .vet-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
             background-color: #FFC0CB;
             width: 900px;
@@ -97,6 +101,32 @@
           }
           
           .form-submission {
+            margin: 60px auto;
+            background-color: #efefef;
+            padding: 60px 120px 80px 120px;
+            box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+            position: absolute;
+          }
+
+  /* EDIT FORM */
+
+          .edit-header {
+            font-family: 'Fugaz One', cursive;
+            text-align: center;
+            padding-top: 20px;
+          }
+          
+          .edit-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            background-color: #AFEEEE;
+            position: relative;
+            margin: 0 auto;
+          }
+
+          .edit-animal-form {
             margin: 60px auto;
             background-color: #efefef;
             padding: 60px 120px 80px 120px;
