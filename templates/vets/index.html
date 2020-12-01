@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <header class="header">VETS</header> 
+
+        {% for vetenarian in all_vetenarians %}
+            <section class="practice-container">
+
+                <div> {{ vetenarian.name }}</a></div>
+
+                    {% for animal in all_animals %}
+                        <div class="customer-items"></div>
+
+                            <div class="animal-items">
+
+                                <div>Name: {{ animal.name }}</a></div>
+                                <div>DoB: {{ animal.dob }}</div>
+                                <div>Type: {{ animal.animal_type }}</div>
+                                <div>Owner Contact Info{{ animal.contact_details }}</div>
+                                <div class="notes">Notes: {{ animal.notes }}</div>
+                                <div>Residing: {{ animal.vetenarian.name }}</div><br>
+                                <form action="/animals/{{ animal.id }}/edit" method="GET">
+                                    <input type="submit" value="Change Details">
+                                </form> 
+                                <form action="/animals/{{ animal.id }}/delete" method="POST">
+                                    <input type="submit" value="Delete">
+                                </form> 
+
+                            </div>
+                        </div>
+
+                    {% endfor %}  
+            </section>  
+        {% endfor %}
+
+{% endblock %}

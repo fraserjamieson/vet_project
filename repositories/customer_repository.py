@@ -1,6 +1,6 @@
 from db.run_sql import run_sql
-from models.customers import Customer
-from models.vets import Vetenarian
+from models.customer import Customer
+from models.vet import Vetenarian
 from models.animal import Animal
 
 def save(customer):
@@ -15,21 +15,20 @@ def select_all():
     sql = "SELECT * FROM customers"
     results = run_sql(sql)
     for result in results:
-        customers = Customer(
+        customer = Customer(
             result["name"], 
             result["id"])
         customers.append(customer)
     return customers
 
 def select(id):
-    sql ="SELECT * FROM customers where id = %s"
+    customer = None
+    sql ="SELECT * FROM customers WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
    
     if result is not None:
-     customer = Customer(
-        result["name"], 
-        result["id"])
+        customer = Customer(result["name"], result["id"])
     return customer 
 
 def delete_all():

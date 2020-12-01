@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
 
-from models.vets import Vetenarian
-from models.animals import Animal 
+from models.vet import Vetenarian
+from models.animal import Animal 
 
 # create 
 

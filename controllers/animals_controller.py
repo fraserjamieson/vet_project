@@ -1,8 +1,10 @@
 from flask import Flask, render_template, Blueprint, redirect, request
-from models.animals import Animal
-from models.vets import Vetenarian
+from models.animal import Animal
+from models.vet import Vetenarian
+from models.customer import Customer
 import repositories.animal_repository as animal_repository
 import repositories.vet_repository as vet_repository
+import repositories.customer_repository as customer_repository
 
 
 animals_blueprint = Blueprint("animals", __name__) 
@@ -22,7 +24,8 @@ def animals():
 def new_animal():
     vetenarians = vet_repository.select_all()
     animals = animal_repository.select_all()
-    return render_template("/animals/new.html", all_animals = animals, all_vetenarians = vetenarians)
+    customers = customer_repository.select_all()
+    return render_template("/animals/new.html", all_animals = animals, all_vetenarians = vetenarians, all_customers = customers)
 
 # CREATE 
 
@@ -36,8 +39,10 @@ def create_animal():
     contact_details = request.form["contact_details"]
     notes = request.form["notes"]
     vetenarian = vet_repository.select(request.form["vetenarian_id"])
-    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian)
+    customer = customer_repository.select(request.form["customer_id"])
+    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian, customer)
     animal_repository.save(animal)
+    customer_repository.save(customer)
     return redirect("/animals") 
 
 # SHOW 
@@ -68,7 +73,7 @@ def update_animal(id):
     contact_details = request.form["contact_details"]
     notes = request.form["notes"]
     vetenarian  = vet_repository.select(request.form["vetenarian_id"])
-    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian, id)
+    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian,  id)
     animal_repository.update(animal)
     return redirect("/animals")
 
