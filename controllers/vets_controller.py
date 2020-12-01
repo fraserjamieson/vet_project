@@ -21,11 +21,22 @@ vets_blueprint = Blueprint("vets", __name__)
 # SHOW 
 
 @vets_blueprint.route("/vets", methods=['GET'])
-def show_vets_animals():
+def vets():
     vetenarians = vet_repository.select_all()
     animals = animal_repository.select_all()
     customers = customer_repository.select_all()
     return render_template('/vets/index.html', all_vetenarians = vetenarians, all_customers = customers, all_animals = animals)
+
+# SHOW 
+
+# list of animals cared for by each vet
+
+@animals_blueprint.route("/vets/<id>", methods=['GET'])
+def show_animals(id):
+    animals = animal_repository.select(id)
+    customer = customer_repository.select(id)
+    customer_animals = animal_repository.display_vet_animals(id)
+    return render_template('/vets/customer.html', animals = animals, customer_animals = customer_animals, customer = customer)
 
 # DELETE
 
@@ -35,3 +46,23 @@ def show_vets_animals():
 def delete_animal(id):
     animal_repository.delete(id)
     return redirect('/vets')
+
+# NEW customer
+
+@vets_blueprint.route("/vets/customer", methods=['GET'])
+def new_customer():
+
+    return render_template('/vets/new.html', )
+
+# CREATE 
+
+# REGISTER new customer
+
+@vets_blueprint.route("/vets/customer", methods=['POST'])
+def create_customer():
+    name = request.form["name"]
+    vetenarian = vet_repository.select(request.form["vetenarian_id"])
+
+    customer = Customer(name, vetenarian)
+    vet_repository.save(customer)
+    return redirect("/vets") 

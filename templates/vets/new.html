@@ -11,38 +11,14 @@
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Name here" required autofocus>
       </div>
-    
-      <div>
-        <label for="dob">D/O/B</label>
-        <input type="date" id="dob" name="dob" required>
-      </div>
-    
-      <div>
-        <label for="animal_type">Type</label>
-        <input type="text" id="animal_type" name="animal_type" placeholder="write literally" required>
-      </div>
 
       <div>
           <label for="contact_details">Contact Number</label>
           <input type="text" id="contact_details" name="contact_details" placeholder="write literally" required>
       </div>
-
-      <div>
-          <label for="notes">Introductory Notes</label>
-          <input type="text" id="notes" name="notes" placeholder="Is there any information required from owner at first contact">
-      </div>
-
-      <div>
-        <label for="customer">Owner of animal</label>
-        <select id="customer" name="customer_id">
-          {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for vet assignment -->
-            <option value="{{ customer.id }}">{{ customer.name }}</option> 
-          {% endfor %} 
-        </select>  
-      </div>
     
       <div>
-        <label for="vetenarian">Assigned Practice</label>
+        <label for="vetenarian">Assign Practice</label>
           <select id="vetenarian" name="vetenarian_id">
             {% for vetenarian in all_vetenarians %} <!-- LOOP to generate HTML option elements for vet assignment -->
               <option value="{{ vetenarian.id }}">{{ vetenarian.name }}</option> 

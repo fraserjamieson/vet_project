@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <header class="header">CUSTOMERS</header> 
+            <section class="pet-container">
+                {% for customer in all_customers %}
+
+                    <div class="animal-items">
+
+                        <p>Name: {{ customer.name }} </p>
+                        <p>Owner Contact Info: {{ customer.contact_details }}</p>
+                        <p>Registered to: {{ customer.vetenarian.name }}</p><br>
+
+                        <form action="/vets/{{ customer.id }}/edit" method="GET" class="firstbutton">
+                            <input type="submit" value="Change Details">
+                        </form> 
+                        <form action="/vets/{{ customer.id }}/delete" method="POST" class="button">
+                            <input type="submit" value="Delete">
+                        </form> 
+
+                    </div>
+
+                {% endfor %}  
+            </section>  
+
+{% endblock %}
