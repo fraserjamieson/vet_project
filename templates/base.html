@@ -16,19 +16,14 @@
 
         <h1 class="animal-header">HALO</h1>
         
-          <div class="w3-bar w3-black">
-            <a href="/" class="w3-bar-item w3-button">Home</a>
-            <a href="/animals" class="w3-bar-item w3-button">Animals</a>
-            <a href="/animals/new" class="w3-bar-item w3-button">Register Animal</a>
-          </div>
+            <div tabindex="1"><a href="/" class="w3-bar-item w3-button">Home</a></div>
+            <div tabindex="2"><a href="/animals" class="w3-bar-item w3-button">Animals</a></div>
+            <div tabindex="3"><a href="/animals/new" class="w3-bar-item w3-button">Register Animal</a></div>
 
     </header>
-      <div class="home-container">
         
         {% block home %}
         {% endblock %}
-
-      </div>
 
         {% block content %}
         {% endblock %}

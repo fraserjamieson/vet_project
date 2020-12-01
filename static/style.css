@@ -16,10 +16,10 @@
           /* HEADER */
 
           .animal-header {
-            font: 800;
+            font: 1200;
           }
 
-          li a {
+          header div {
             display: block;
             width: 100px;
             background-color: orange;
@@ -33,9 +33,17 @@
             text-align: center;
             font-family: 'Fugaz One', cursive;
           }
+    
+    /* HOME */
 
-          .home-container {
-            border: 5px dotted orange;
+          .home-header {
+            padding: 50px;
+            text-align: center;
+          }
+
+          .home-body {
+            font-family: "Helvetica", arial, sans-serif; font-size: 16px;
+            height: 100%;
           }
 
     /* ANIMALS */
