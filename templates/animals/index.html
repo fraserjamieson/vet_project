@@ -2,21 +2,22 @@
 {% block content %}
 
     <header class="header">ANIMALS</header> 
-            <section class="vet-container">
+            <section class="pet-container">
                 {% for animal in all_animals %}
 
                     <div class="animal-items">
 
-                        <div>Name: {{ animal.name }}</a></div>
-                        <div>DoB: {{ animal.dob }}</div>
-                        <div>Type: {{ animal.animal_type }}</div>
-                        <div>Owner Contact Info{{ animal.contact_details }}</div>
-                        <div class="notes">Notes: {{ animal.notes }}</div>
-                        <div>Residing: {{ animal.vetenarian }}</div><br>
-                        <form action="/animals/{{ animal.id }}/edit" method="GET">
+                        <p>Name: {{ animal.name }}</a></p>
+                        <p>DoB: {{ animal.dob }}</p>
+                        <p>Type: {{ animal.animal_type }}</p>
+                        <p>Owner Contact Info: {{ animal.contact_details }}</p>
+                        <p class="notes">Notes: {{ animal.notes }}</p>
+                        <p>Registered to: {{ animal.vetenarian.name }}</p><br>
+
+                        <form action="/animals/{{ animal.id }}/edit" method="GET" class="firstbutton">
                             <input type="submit" value="Change Details">
                         </form> 
-                        <form action="/animals/{{ animal.id }}/delete" method="POST">
+                        <form action="/animals/{{ animal.id }}/delete" method="POST" class="button">
                             <input type="submit" value="Delete">
                         </form> 
 

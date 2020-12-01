@@ -4,33 +4,38 @@
     <header class="header">VETS</header> 
 
         {% for vetenarian in all_vetenarians %}
-            <section class="practice-container">
+        
+            <h2 class="vet-name-header"> {{ vetenarian.name }}</h2>
 
-                <div> {{ vetenarian.name }}</a></div>
-
+                <section class="customer-items">
                     {% for animal in all_animals %}
-                        <div class="customer-items"></div>
+                    
+                        <div class="vet-items">
 
-                            <div class="animal-items">
+                            <div class="vet-item-padding">
 
-                                <div>Name: {{ animal.name }}</a></div>
-                                <div>DoB: {{ animal.dob }}</div>
-                                <div>Type: {{ animal.animal_type }}</div>
-                                <div>Owner Contact Info{{ animal.contact_details }}</div>
-                                <div class="notes">Notes: {{ animal.notes }}</div>
-                                <div>Residing: {{ animal.vetenarian.name }}</div><br>
+                                <p>Name: {{ animal.vetenarian.name }}<br>
+                                DoB: {{ animal.vetenarian.dob }}<br>
+                                Type: {{ animal.vetenarian.animal_type }}<br>
+                                Owner Contact Info {{ animal.vetenarian.contact_details }}</p>
+
+                                <p class="notes">Notes: {{ animal.vetenarian.notes }}</div>
+                                    <br><br>
+                                <p> Owned by: {{ animal.customer.name }}</p>
+                                
                                 <form action="/animals/{{ animal.id }}/edit" method="GET">
                                     <input type="submit" value="Change Details">
-                                </form> 
-                                <form action="/animals/{{ animal.id }}/delete" method="POST">
+                                </form> <br><br>
+
+                                <form action="/vets/{{ animal.id }}/delete" method="POST">
                                     <input type="submit" value="Delete">
                                 </form> 
 
                             </div>
-                        </div>
+                        </div>   
 
-                    {% endfor %}  
-            </section>  
-        {% endfor %}
+                    {% endfor %}   
+                </section>
+        {% endfor %} 
 
 {% endblock %}

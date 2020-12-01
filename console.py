@@ -15,9 +15,9 @@ vet_repository.save(halopetcare)
 dolittles = Vetenarian("Do Littles")
 vet_repository.save(dolittles)
 
-reece = Customer("Reece")
+reece = Customer("Reece Charity")
 customer_repository.save(reece)
-muran = Customer("Muran")
+muran = Customer("Muran Battison")
 customer_repository.save(muran)
 
 zero = Animal("Zero", "13/10/2018", "Dog", "01382", "Visited to recieve yearly jab", halopetcare, reece)

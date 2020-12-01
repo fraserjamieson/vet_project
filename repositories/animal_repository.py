@@ -72,8 +72,9 @@ def display_vet_animals(id):
             FROM animals
             WHERE vetenarian_id = %s"""
     values = [id]
-    results = run_sql(sql, vaules)
+    results = run_sql(sql, values)
     vetenarian = vet_repository.select(id)
+    customer = customer_repository.select(id)
     for result in results:
         animals =  Animal(
         result ["name"],

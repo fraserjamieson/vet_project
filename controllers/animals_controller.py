@@ -49,11 +49,11 @@ def create_animal():
 
 # list of animals owned by each vet
 
-@animals_blueprint.route("/animals/<id>", methods=['GET'])
-def show_animal(id):
-    vet_animals = animal_repository.display_vet_animals(id)
-    animal = animal_repository.select(id)
-    return render_template('/animals/show.html', animal = animal, vetenarian = vet_animals)
+# @animals_blueprint.route("/animals/<id>", methods=['GET'])
+# def show_animal(id):
+#     vet_animals = animal_repository.display_vet_animals(id)
+#     animal = animal_repository.select(id)
+#     return render_template('/animals/show.html', animal = animal, vetenarian = vet_animals)
 
 # EDIT 
 

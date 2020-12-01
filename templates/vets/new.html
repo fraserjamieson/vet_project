@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="register-header">REGISTER ANIMAL</h1> 
+<h1 class="register-header">CUSTOMER REGISTRATION</h1> 
 
   <div class="form-body">
 
@@ -23,7 +23,7 @@
       </div>
 
       <div>
-          <label for="contact_details">Owner Contact Number</label>
+          <label for="contact_details">Contact Number</label>
           <input type="text" id="contact_details" name="contact_details" placeholder="write literally" required>
       </div>
 
@@ -34,12 +34,11 @@
 
       <div>
         <label for="customer">Owner of animal</label>
-          <select id="customer" name="customer_id">
-            {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for vet assignment -->
-              <option hidden selected>Select one...</option>
-              <option value="{{ customer.id }}">{{ customer.name }}</option> 
-            {% endfor %} 
-          </select>  
+        <select id="customer" name="customer_id">
+          {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for vet assignment -->
+            <option value="{{ customer.id }}">{{ customer.name }}</option> 
+          {% endfor %} 
+        </select>  
       </div>
     
       <div>

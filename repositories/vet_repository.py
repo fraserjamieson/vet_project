@@ -59,7 +59,7 @@ def update(vetenarian):
 
 # selects animal with specifically designated vetenarian
 
-def animals(vetenarian):
+def vet_animals(vetenarian):
     animals = []
 
     sql = "SELECT * FROM animals WHERE vetenarian_id = %s"

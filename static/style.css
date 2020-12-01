@@ -29,7 +29,7 @@
           }
 
           .header {
-            font: 30px bold;
+            font: 50px bold;
             text-align: center;
             font-family: 'Fugaz One', cursive;
           }
@@ -46,11 +46,42 @@
             height: 100%;
           }
 
+    /* PRACTICE */
+
+          .vet-name-header {
+            font: 30px bold;
+            text-align: center;
+            font-family: 'Fugaz One', cursive;
+            padding-bottom: 30px;
+          }
+
+          .customer-items {
+            display: flex;
+            justify-content: center;
+            width: 90%;
+            background-color: blue;
+            margin: auto;
+            padding: 10px;
+            border-width: 1px 4px 12px 4px;
+          }
+
+          .vet-items {
+            width: 33%;
+            background-color: orange;
+            padding: 10px;
+            margin: 10px;
+          }
+
+          .vet-item-padding {
+            background-color: greenyellow;
+          }
+
+
     /* ANIMALS */
           
           /* BODY  */
 
-          .vet-container {
+          .pet-container {
             display: flex;
             flex-wrap: nowrap;
             justify-content: center;
@@ -63,15 +94,15 @@
             padding: 10px;
           }
 
-          .animal-items {
+          .pet-container .animal-items {
             background-color: #AFEEEE;
-            border: 2px solid black;
+            border: 5px solid black;
             margin-top: 20px;
             padding: 10px;
-            flex: 1 1 120px;
             text-align: left;
-            line-height: 10px;
             border-radius: 5px;
+            width: 33%;
+            float: right;
           } 
 
           .animal-items > div {
@@ -79,11 +110,20 @@
             resize: both;
           }
 
-          .notes {
+          p.notes {
             overflow: auto;
             line-height: normal;
             background-color: #E0FFFF;
             -webkit-text-stroke-width: thick;
+            padding: 10px;
+          }
+
+          .firstbutton {
+            float: left;
+          }
+
+          .button {
+            clear: both;
           }
 
   /* REGISTER ANIMAL */
