@@ -8,15 +8,18 @@
             <h2 class="vet-name-header"> {{ vetenarian.name }}</h2>
 
                 <section class="customer-items">
-                    {% for animal in all_animals %}
+
+                {% for animal in all_animals %}
+
+                    {% if animal.vetenarian.id == vetenarian.id %}
                     
                         <div class="vet-items">
 
                             <div class="vet-item-padding">
 
-                                <p>Name: {{ animal.name }}<br>
+                                <p>Name: {{ animal.name }} <br>
                                 DoB: {{ animal.dob }}<br>
-                                Type: {{ animal.animal_type }}<br>
+                                Type: {{ animal.animal_type }} <br>
                                 Owner Contact Info {{ animal.contact_details }}</p>
 
                                 <p class="notes">Notes: {{ animal.notes }}</div>
@@ -32,10 +35,14 @@
                                 </form> 
 
                             </div>
-                        </div>   
+                        </div>
 
-                    {% endfor %}   
+                    {% endif %}   
+
+                {% endfor %}   
+                
                 </section>
+
         {% endfor %} 
 
 {% endblock %}
