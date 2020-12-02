@@ -7,9 +7,9 @@ def save(customer):
     sql = "INSERT INTO customers (name) VALUES (%s) RETURNING id"
     values = [customer.name]
     results = run_sql(sql, values)
-    id = results[0]['id']
-    customer.id = id
-
+    customer.id = results[0]['id']
+    return customer
+    
 def select_all():
     customers = []
     sql = "SELECT * FROM customers"

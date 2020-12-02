@@ -34,7 +34,11 @@
 
       <div>
           <label for="customer">Owner of animal</label>
-          <input type="text" id="customer" name="customer_id" placeholder="Owners name">
+          <select id="customer" name="customer_id">
+            {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for customer assignment -->
+            <option value="{{ customer.id }}">{{ customer.name }}</option> 
+          {% endfor %} 
+        </select>      
       </div>
     
       <div>

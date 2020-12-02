@@ -25,7 +25,7 @@ def animals():
 def new_animal():
     vetenarians = vet_repository.select_all()
     customers = customer_repository.select_all()
-    return render_template("/animals/new.html", all_animals = animals, all_vetenarians = vetenarians, all_customers = customers)
+    return render_template("/animals/new.html", all_vetenarians = vetenarians, all_customers = customers)
 
 # CREATE 
 
@@ -38,11 +38,10 @@ def create_animal():
     animal_type = request.form["animal_type"]
     contact_details = request.form["contact_details"]
     notes = request.form["notes"]
-    customer = customer_repository.update(request.form["customer_id"])
+    customer = customer_repository.select(request.form["customer_id"])
     vetenarian = vet_repository.select(request.form["vetenarian_id"])
     animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian, customer)
     animal_repository.save(animal)
-    customer_repository.save(customer)
     return redirect("/animals") 
 
 # EDIT 
