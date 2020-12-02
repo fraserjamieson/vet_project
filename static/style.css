@@ -97,6 +97,15 @@
             background-color: greenyellow;
           }
 
+          .vet-item-padding p {
+            padding: 5px;
+            margin: 10px;
+          }
+
+          .vet-item-padding form input {
+            margin: 5px;
+          }
+
 
     /* ANIMALS */
           
@@ -196,6 +205,13 @@
             margin: 60px auto;
             background-color: #efefef;
             padding: 60px 120px 80px 120px;
-            box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-            position: absolute;
+            box-shadow: 4px 5px 3px rgba(0,0,0,0.1);
+          }
+
+          .edit-animal-form > div {
+            padding: 2px;
+          }
+
+          .noteslabel {
+            float: left;
           }

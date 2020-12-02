@@ -22,8 +22,8 @@
                                 Type: {{ animal.animal_type }} <br>
                                 Owner Contact Info {{ animal.contact_details }}</p>
 
-                                <p class="notes">Notes: {{ animal.notes }}</div>
-                                    <br><br>
+                                <p class="notes">Notes: {{ animal.notes }}</p>
+                                    <br>
                                 <p> Owned by: {{ animal.customer.name }}</p>
                                 
                                 <form action="/animals/{{ animal.id }}/edit" method="GET">

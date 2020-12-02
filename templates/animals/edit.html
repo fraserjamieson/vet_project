@@ -28,21 +28,23 @@
         </div>
 
         <div>
-            <label for="notes">Notes:</label>
-            <textarea rows="15" cols="10" name="notes" form="usrform" value="{{ animal.notes }}">
-              Enter text here...</textarea>
-            <input type="text" style="height:100px" id="notes" name="notes" value="{{ animal.notes }}"  required>
+            <label for="notes" class="noteslabel">Notes:</label>
+            <textarea type="text" rows="5" cols="20" id="notes" name="notes" value="{{ animal.notes }}"  required></textarea>
         </div>
       
         <div>
           <label for="vetenarian">Assigned Vet:</label>
+
             <select id="vetenarian" name="vetenarian_id">
+
               {% for vetenarian in all_vetenarians %}
-                <option value="{{ vetenarian.id }}"
-                {% if animal.vetenarian.id== vetenarian.id %} selected="selected" {% endif %}>
+
+                <option value="{{ vetenarian.id }}">
                   {{ vetenarian.name }}
                 </option>
+
               {% endfor %}
+
             </select>
         </div>
       

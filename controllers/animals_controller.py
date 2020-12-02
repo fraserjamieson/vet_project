@@ -64,7 +64,7 @@ def update_animal(id):
     vetenarian  = vet_repository.select(request.form["vetenarian_id"])
     animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian,  id)
     animal_repository.update(animal)
-    return redirect("/animals")
+    return redirect("/vets")
 
 # DELETE
 
