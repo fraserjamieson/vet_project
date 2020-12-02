@@ -9,6 +9,7 @@ import repositories.customer_repository as customer_repository
 
 animal_repository.delete_all()
 vet_repository.delete_all()
+customer_repository.delete_all()
 
 halopetcare = Vetenarian("Halo Pet Care")
 vet_repository.save(halopetcare)
@@ -23,7 +24,7 @@ customer_repository.save(muran)
 zero = Animal("Zero", "13/10/2018", "Dog", "01382", "Visited to recieve yearly jab", halopetcare, reece)
 animal_repository.save(zero)
 
-beethoven = Animal("Beethoven", "13/11/2018", "Dog", "01382", "Poor thing had soft case of the runs.  Was displaying troubling symptons of something more serious, but aptly treated with relevant antibiotics", halopetcare, reece)
+beethoven = Animal("Beethoven", "13/11/2018", "Dog", "01382", "Poor thing had soft case of the runs.  Was displaying troubling symptons of something more serious.  Aptly treated with relevant antibiotics", halopetcare, reece)
 animal_repository.save(beethoven)
 
 luna = Animal("Luna", "12/03/2016", "Parakeet", "0141", "Is lethargic, and wont respond to calling or offering of food.  Possibly a sign of sickness", dolittles, muran)

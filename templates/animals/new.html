@@ -36,8 +36,8 @@
           <label for="customer">Owner of animal</label>
           <select id="customer" name="customer_id">
             {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for customer assignment -->
-            <option value="{{ customer.id }}">{{ customer.name }}</option> 
-          {% endfor %} 
+              <option value="{{ customer.id }}">{{ customer.name }}</option> 
+            {% endfor %} 
         </select>      
       </div>
     
@@ -50,7 +50,7 @@
           </select>        
       </div>
     
-      <button type="submit">Submit</button>
+      <input type="submit"></button>
     
     </form>
 

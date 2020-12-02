@@ -50,21 +50,26 @@ def create_animal():
 def edit_animal(id):
     animal = animal_repository.select(id)
     vetenarians = vet_repository.select_all()
-    return render_template('/animals/edit.html', animal = animal, all_vetenarians = vetenarians)
+    customers = customer_repository.select_all()
+    return render_template("/animals/edit.html", title= "Edit Animal", animal = animal, all_vetenarians = vetenarians, all_customers = customers)
 
 # UPDATE
 
-@animals_blueprint.route("/animals/<id>", methods=["POST"])
+@animals_blueprint.route("/animals/<id>/edit", methods=["POST"])
 def update_animal(id):
+    # takes data from form
     name = request.form["name"]
     dob = request.form["dob"]
     animal_type = request.form["animal_type"]
     contact_details = request.form["contact_details"]
     notes = request.form["notes"]
     vetenarian  = vet_repository.select(request.form["vetenarian_id"])
-    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian,  id)
-    animal_repository.update(animal)
-    return redirect("/vets")
+    customer = customer_repository.select(request.form["customer_id"])
+    # make new instance of an Animal using data as constructor values
+    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian, customer)
+    # add this new animal object to animal list
+    animal_repository.save(animal)
+    return redirect("/animals")
 
 # DELETE
 
@@ -73,4 +78,4 @@ def update_animal(id):
 @animals_blueprint.route("/animals/<id>/delete", methods=['POST'])
 def delete_animal(id):
     animal_repository.delete(id)
-    return redirect('/animals')
+    return redirect("/animals")

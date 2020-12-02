@@ -12,8 +12,6 @@ vets_blueprint = Blueprint("vets", __name__)
 # 
 # list of vets
 
-# This show animals cared for, but has bug.  need to show animals cared for by SPECIFIC vet
-
 @vets_blueprint.route("/vets", methods=['GET'])
 def vets():
     vetenarians = vet_repository.select_all()
@@ -46,22 +44,22 @@ def delete_animal(id):
 
 # NEW customer
 
-# Get customer info
+# # Get customer info
 
-@vets_blueprint.route("/vets/new", methods=['GET'])
-def new_customer():
-    vetenarians = vet_repository.select_all()
-    return render_template('/vets/new.html', )
+# @vets_blueprint.route("/vets/new", methods=['GET'])
+# def new_customer():
+#     vetenarians = vet_repository.select_all()
+#     return render_template('/vets/new.html', )
 
-# CREATE 
+# # CREATE 
 
-# REGISTER new customer
+# # REGISTER new customer
 
-@vets_blueprint.route("/vets/new", methods=['POST'])
-def create_customer():
-    name = request.form["name"]
-    vetenarian = vet_repository.select(request.form["vetenarian_id"])
+# @vets_blueprint.route("/vets/new", methods=['POST'])
+# def create_customer():
+#     name = request.form["name"]
+#     vetenarian = vet_repository.select(request.form["vetenarian_id"])
 
-    customer = Customer(name, vetenarian)
-    vet_repository.save(customer)
-    return redirect("/vets") 
+#     customer = Customer(name, vetenarian)
+#     vet_repository.save(customer)
+#     return redirect("/vets") 
