@@ -16,6 +16,8 @@ vet_repository.save(halopetcare)
 dolittles = Vetenarian("Do Littles")
 vet_repository.save(dolittles)
 
+vet_repository.select_all()
+
 reece = Customer("Reece Charity")
 customer_repository.save(reece)
 muran = Customer("Muran Battison")

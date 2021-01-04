@@ -4,7 +4,6 @@ class Animal:
         self.name = name
         self.dob = dob
         self.animal_type = animal_type
-        self.contact_details = contact_details
         self.notes = notes
         self.vetenarian = vetenarian
         self.customer = customer

@@ -57,6 +57,20 @@ def update(vetenarian):
     values = [vetenarian.name, vetenarian.id]
     run_sql(sql, values)
 
+# -------------
+
+def customers(vetenarian):
+    customers = []
+
+    sql = "SELECT * FROM customers WHERE vetenarian_id = %s"
+    values = [vetenarian.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        customer = Customer(row['name'], vetenarian, row['contact_details'], row['id'])
+        customers.append(customer)
+    return customers
+
 # selects animal with specifically designated vetenarian
 
 def vet_animals(vetenarian):
@@ -67,6 +81,6 @@ def vet_animals(vetenarian):
     results = run_sql(sql, values)
 
     for row in results:
-        animal = Animal(row['name'], row['DOB'], row['type'], row['contact_details'], row['notes'], row['id'])   #--------REMOVE Vetenarian_ID to fix formatting issue in table
+        animal = Animal(row['name'], row['DOB'], row['animal_type'], row['notes'], row['id'], row['id'])   
         animals.append(animal)
     return animals

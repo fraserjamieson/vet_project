@@ -42,12 +42,14 @@ def delete_animal(id):
     animal_repository.delete(id)
     return redirect('/vets')
 
+# ------------
+
 # NEW customer
 
 # # Get customer info
 
-# @vets_blueprint.route("/vets/new", methods=['GET'])
-# def new_customer():
+# @vets_blueprint.route("/vets/get", methods=['GET'])
+# def get_customer():
 #     vetenarians = vet_repository.select_all()
 #     return render_template('/vets/new.html', )
 
@@ -59,7 +61,6 @@ def delete_animal(id):
 # def create_customer():
 #     name = request.form["name"]
 #     vetenarian = vet_repository.select(request.form["vetenarian_id"])
-
-#     customer = Customer(name, vetenarian)
+#     customer = Customer(name, contact_details, vetenarian)
 #     vet_repository.save(customer)
 #     return redirect("/vets") 

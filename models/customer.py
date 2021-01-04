@@ -1,5 +1,5 @@
 class Customer:
-    def __init__(self, name, id= None):
+    def __init__(self, name, vetenarian, id= None):
         self.name = name
-        self.animals = []
+        self.vetenarian = vetenarian
         self.id = id

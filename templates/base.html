@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+
     <title>Vet Management System</title>
+
   </head>
 
   <body>
@@ -18,8 +22,8 @@
         
             <div tabindex="1"><a href="/" class="w3-bar-item w3-button">Home</a></div>
             <div tabindex="2"><a href="/vets" class="w3-bar-item w3-button">Practices</a></div>
-            <!-- <div tabindex="3"><a href="/vets/customer" class="w3-bar-item w3-button">Customers</a></div>
-            <div tabindex="3"><a href="/vets/new" class="w3-bar-item w3-button">Register Customer</a></div> -->
+            <div tabindex="3"><a href="/vets/customer" class="w3-bar-item w3-button">Customers</a></div>
+            <div tabindex="3"><a href="/vets/new" class="w3-bar-item w3-button">Register Customer</a></div>
             <div tabindex="4"><a href="/animals" class="w3-bar-item w3-button">Animals</a></div>
             <div tabindex="5"><a href="/animals/new" class="w3-bar-item w3-button">Register Animal</a></div>
 
@@ -32,4 +36,5 @@
         {% endblock %}
 
   </body>
+
 </html>

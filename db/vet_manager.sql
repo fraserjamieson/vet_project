@@ -8,9 +8,10 @@ CREATE TABLE vetenarians (
 );
 
 CREATE TABLE customers (
-    id SERIAL PRIMARY KEY, 
-    vetenarian_id INT REFERENCES vetenarians(id),
-    name VARCHAR(255)
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    contact_details VARCHAR(255),
+    vetenarian_id INT REFERENCES vetenarians(id)
 );
 
 CREATE TABLE animals (
@@ -18,7 +19,6 @@ CREATE TABLE animals (
     name VARCHAR(255),
     dob VARCHAR(255),
     animal_type VARCHAR(255),
-    contact_details VARCHAR(255),
     notes TEXT,
     vetenarian_id INT REFERENCES vetenarians(id),
     customer_id INT REFERENCES customers(id)

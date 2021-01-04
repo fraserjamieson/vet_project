@@ -2,22 +2,24 @@ from db.run_sql import run_sql
 from models.customer import Customer
 from models.vet import Vetenarian
 from models.animal import Animal
+import repositories.vet_repository as vet_repository
 
 def save(customer):
-    sql = "INSERT INTO customers (name) VALUES (%s) RETURNING id"
-    values = [customer.name]
+    sql = "INSERT INTO customers (name, contact_details, vet_id) VALUES (%s, %s, %s) RETURNING *"
+    values = [customer.name, customer.contact_details, customer.vet.id]
     results = run_sql(sql, values)
     customer.id = results[0]['id']
     return customer
     
 def select_all():
     customers = []
+
     sql = "SELECT * FROM customers"
     results = run_sql(sql)
-    for result in results:
-        customer = Customer(
-            result["name"], 
-            result["id"])
+
+    for row in results:
+        vet = vet_repository.select(row['vetenarian_id'])
+        customer = Customer(row["name"], vet, row["animals"], row["id"])
         customers.append(customer)
     return customers
 
@@ -28,7 +30,8 @@ def select(id):
     result = run_sql(sql, values)[0]
    
     if result is not None:
-        customer = Customer(result["name"], result["id"])
+        vetenarian = vet_repository.select(result['user_id'])
+        customer = Customer(result['name'], vetenarian,  result['id'])
     return customer 
 
 def delete_all():

@@ -36,11 +36,10 @@ def create_animal():
     name = request.form["name"]
     dob = request.form["dob"]
     animal_type = request.form["animal_type"]
-    contact_details = request.form["contact_details"]
     notes = request.form["notes"]
     customer = customer_repository.select(request.form["customer_id"])
     vetenarian = vet_repository.select(request.form["vetenarian_id"])
-    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian, customer)
+    animal = Animal(name, dob, animal_type, notes, vetenarian, customer)
     animal_repository.save(animal)
     return redirect("/animals") 
 
@@ -61,12 +60,14 @@ def update_animal(id):
     name = request.form["name"]
     dob = request.form["dob"]
     animal_type = request.form["animal_type"]
-    contact_details = request.form["contact_details"]
     notes = request.form["notes"]
     vetenarian  = vet_repository.select(request.form["vetenarian_id"])
     customer = customer_repository.select(request.form["customer_id"])
+
     # make new instance of an Animal using data as constructor values
-    animal = Animal(name, dob, animal_type, contact_details, notes, vetenarian, customer)
+
+    animal = Animal(name, dob, animal_type, notes, vetenarian, customer)
+    
     # add this new animal object to animal list
     animal_repository.save(animal)
     return redirect("/animals")
