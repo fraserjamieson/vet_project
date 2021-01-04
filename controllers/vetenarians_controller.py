@@ -3,21 +3,21 @@ from models.animal import Animal
 from models.vet import Vetenarian
 from models.customer import Customer
 import repositories.animal_repository as animal_repository
-import repositories.vet_repository as vet_repository
+import repositories.vetenarian_repository as vetenarian_repository
 import repositories.customer_repository as customer_repository
 
-vets_blueprint = Blueprint("vets", __name__) 
+vetenarians_blueprint = Blueprint("vetenerians", __name__) 
 
 # INDEX 
-# 
-# list of vets
 
-@vets_blueprint.route("/vets", methods=['GET'])
+# Declare a route for the list of vets
+
+@vets_blueprint.route("/vetenarians", methods=['GET'])
 def vets():
     vetenarians = vet_repository.select_all()
     animals = animal_repository.select_all()
     customers = customer_repository.select_all()
-    return render_template('/vets/index.html', all_vetenarians = vetenarians, all_customers = customers, all_animals = animals)
+    return render_template('/vetenarians/index.html', all_vetenarians = vetenarians, all_customers = customers, all_animals = animals)
 
 # SHOW customers
 

@@ -1,6 +1,7 @@
 import unittest
 from models.vets import Vetenarian
 from models.animals import Animal
+from models.customer import Customer
 
 class TestVetenarian(unittest.TestCase):
     def setUp(self):
