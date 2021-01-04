@@ -1,30 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <header class="header">VETS</header> 
+    <header class="header">CUSTOMERS</header> 
 
-        {% for vetenarian in all_vetenarians %}
-        
-            <h2 class="vet-name-header"> {{ vetenarian.name }}</h2>
-
+        {% for customers in all_customers %}
+        <h5 class="vet-name-header"> {{ customer.name }}</h2>
+        <h6> {{ customer.contact_details }}</h6>
                 <section class="customer-items">
 
-                {% for animal in all_animals %}
+                <!-- {% for animal in all_animals %} -->
 
-                    {% if animal.vetenarian.id == vetenarian.id %}
+                    {% if animal.customer.id == customer.id %}
                     
                         <div class="vet-items">
 
                             <div class="vet-item-padding">
 
-                                <p>Name: {{ animal.name }} <br>
-                                DoB: {{ animal.dob }}<br>
-                                Type: {{ animal.animal_type }} <br>
-                                Owner Contact Info: {{ animal.contact_details }}</p>
+                                <p>Name: {{ customer.animal.name }} <br>
+                                DoB: {{ customer.animal.dob }}<br>
+                                Type: {{ customer.animal.animal_type }} <br>
 
-                                <p class="notes">Notes: {{ animal.notes }}</p>
+                                <p class="notes">Notes: {{ customer.animal.notes }}</p>
                                     <br>
-                                <p> Owned by: {{ animal.customer.name }}</p>
                                 
                                 <form action="/animals/{{ animal.id }}/edit" method="GET">
                                     <input type="submit" value="Change Details">

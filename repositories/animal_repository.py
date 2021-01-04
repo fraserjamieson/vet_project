@@ -1,9 +1,7 @@
 from db.run_sql import run_sql
 
 from models.animal import Animal
-from models.vetenarian import Vetenarian
 from models.customer import Customer
-import repositories.vetenarian_repository as vetenarian_repository
 import repositories.customer_repository as customer_repository
 
 

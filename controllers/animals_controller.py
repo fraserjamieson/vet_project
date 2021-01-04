@@ -1,9 +1,7 @@
 from flask import Flask, render_template, Blueprint, redirect, request
 from models.animal import Animal
-from models.vetenarian import Vetenarian
 from models.customer import Customer
 import repositories.animal_repository as animal_repository
-import repositories.vetenarian_repository as vetenarian_repository
 import repositories.customer_repository as customer_repository
 
 

@@ -1,9 +1,7 @@
 from flask import Flask, render_template, Blueprint, redirect, request
 from models.animal import Animal
-from models.vet import Vetenarian
 from models.customer import Customer
 import repositories.animal_repository as animal_repository
-import repositories.vetenarian_repository as vetenarian_repository
 import repositories.customer_repository as customer_repository
 
 
@@ -24,7 +22,7 @@ def customers():
 def new_customer():
     vetenarians = vetenarian_repository.select_all()
     customers = customer_repository.select_all()
-    return render_template("/customers/new.html", all_vetenarians = vetenarians, all_customers = customers)
+    return render_template("/customers/new.html", all_customers = customers)
 
 # CREATE 
 
@@ -35,8 +33,7 @@ def create_customer():
     name = request.form["name"]
     contact_details = request.form["contact_details"]
     customer = customer_repository.select(request.form["customer_id"])
-    vetenarian = vetenarian_repository.select(request.form["vetenarian_id"])
-    customer = Customer(name, contact_details, vetenarian)
+    customer = Customer(name, contact_details)
     customer_repository.save(customer)
     return redirect("/customers") 
 
@@ -46,8 +43,7 @@ def create_customer():
 def edit_customer(id):
     customer = customer_repository.select(id)
     animals = animal_repository.select.all()
-    vetenarians = vetenarian_repository.select_all()
-    return render_template("/customers/edit.html", title= "Edit Customer", customer - customer, all_vetenarians = vetenarians, all_animals = animals)
+    return render_template("/customers/edit.html", title= "Edit Customer", customer = customer, all_animals = animals)
 
 # UPDATE
 
@@ -56,12 +52,8 @@ def update_customer(id):
     # takes data from form
     name = request.form["name"]
     contact_details = request.form["contact_details"]
-    vetenarian  = vetenarian_repository.select(request.form["vetenarian_id"])
-
     # make new instance of a Customer using data as constructor values
-
-    customer = Customer(name, contact_details, vetenarian)
-    
+    customer = Customer(name, contact_details)
     # add this new customer object to customer list
     customer_repository.save(customer)
     return redirect("/customers")

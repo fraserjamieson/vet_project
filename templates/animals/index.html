@@ -10,9 +10,8 @@
                         <p>Name: {{ animal.name }}</a></p>
                         <p>DoB: {{ animal.dob }}</p>
                         <p>Type: {{ animal.animal_type }}</p>
-                        <p>Owner Contact Info: {{ animal.contact_details }}</p>
                         <p class="notes">Notes: {{ animal.notes }}</p>
-                        <p>Registered to: {{ animal.vetenarian.name }}</p><br>
+                        <p>Registered to: {{ animal.customer.name }}</p><br>
 
                         <form action="/animals/{{ animal.id }}/edit" method="GET" class="firstbutton">
                             <input type="submit" value="Change Details">
