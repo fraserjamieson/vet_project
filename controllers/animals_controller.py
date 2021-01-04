@@ -11,7 +11,7 @@ animals_blueprint = Blueprint("animals", __name__)
 
 # INDEX
 
-# GET list of animals
+# GET list of animals at all vetenarian practices
 
 @animals_blueprint.route("/animals", methods=['GET'])
 def animals():
@@ -19,7 +19,7 @@ def animals():
     customers = customer_repository.select_all()
     return render_template("/animals/index.html", all_animals = animals, all_customers = customers)
 
-# NEW animal
+# NEW animal link to assign with vetenarian practice
 
 @animals_blueprint.route("/animals/new", methods=['GET'])
 def new_animal():
@@ -29,7 +29,7 @@ def new_animal():
 
 # CREATE 
 
-# REGISTER new animal
+# REGISTER new animal on this link
 
 @animals_blueprint.route("/animals/new", methods=['POST'])
 def create_animal():
@@ -43,7 +43,7 @@ def create_animal():
     animal_repository.save(animal)
     return redirect("/animals") 
 
-# EDIT 
+# Link to EDIT chosen existing animal
 
 @animals_blueprint.route("/animals/<id>/edit")
 def edit_animal(id):
@@ -52,7 +52,7 @@ def edit_animal(id):
     customers = customer_repository.select_all()
     return render_template("/animals/edit.html", title= "Edit Animal", animal = animal, all_vetenarians = vetenarians, all_customers = customers)
 
-# UPDATE
+# UPDATE animal on link given
 
 @animals_blueprint.route("/animals/<id>/edit", methods=["POST"])
 def update_animal(id):
@@ -74,7 +74,7 @@ def update_animal(id):
 
 # DELETE
 
-# FORM with POST method to delete animal.
+# FORM with POST method to delete chosen animal.
 
 @animals_blueprint.route("/animals/<id>/delete", methods=['POST'])
 def delete_animal(id):

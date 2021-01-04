@@ -10,7 +10,7 @@ vetenarians_blueprint = Blueprint("vetenerians", __name__)
 
 # INDEX 
 
-# Declare a route for the list of vets
+# Declare a route for the list of vets with assigned animals
 
 @vets_blueprint.route("/vetenarians", methods=['GET'])
 def vets():
@@ -35,7 +35,7 @@ def vets():
 
 # DELETE
 
-# FORM with POST method to delete animal.
+# FORM with POST method to delete animal (alltogether? or from relevant practice?)
 
 @vets_blueprint.route("/vets/<id>/delete", methods=['POST'])
 def delete_animal(id):
