@@ -1,8 +1,8 @@
 from db.run_sql import run_sql
 from models.customer import Customer
-from models.vet import Vetenarian
+from models.vetenarian import Vetenarian
 from models.animal import Animal
-import repositories.vet_repository as vet_repository
+import repositories.vetenarian_repository as vetenarian_repository
 
 def save(customer):
     sql = "INSERT INTO customers (name, contact_details, vet_id) VALUES (%s, %s, %s) RETURNING *"
@@ -18,7 +18,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        vet = vet_repository.select(row['vetenarian_id'])
+        vetenarian = vetenarian_repository.select(row['vetenarian_id'])
         customer = Customer(row["name"], vet, row["animals"], row["id"])
         customers.append(customer)
     return customers
@@ -30,7 +30,7 @@ def select(id):
     result = run_sql(sql, values)[0]
    
     if result is not None:
-        vetenarian = vet_repository.select(result['user_id'])
+        vetenarian = vetenarian_repository.select(result['vetenarian_id'])
         customer = Customer(result['name'], vetenarian,  result['id'])
     return customer 
 

@@ -16,14 +16,13 @@ customers_blueprint = Blueprint("customers", __name__)
 @customers_blueprint.route("/customers", methods=['GET'])
 def customers():
     customers = customer_repository.select_all()
-    customers = customer_repository.select_all()
     return render_template("/customers/index.html", all_animals = animals, all_customers = customers)
 
 # NEW customer
 
 @customers_blueprint.route("/customers/new", methods=['GET'])
 def new_customer():
-    vetenarians = vet_repository.select_all()
+    vetenarians = vetenarian_repository.select_all()
     customers = customer_repository.select_all()
     return render_template("/customers/new.html", all_vetenarians = vetenarians, all_customers = customers)
 
@@ -47,7 +46,7 @@ def create_customer():
 def edit_customer(id):
     customer = customer_repository.select(id)
     animals = animal_repository.select.all()
-    vetenarians = vet_repository.select_all()
+    vetenarians = vetenarian_repository.select_all()
     return render_template("/customers/edit.html", title= "Edit Customer", customer - customer, all_vetenarians = vetenarians, all_animals = animals)
 
 # UPDATE
@@ -57,7 +56,7 @@ def update_customer(id):
     # takes data from form
     name = request.form["name"]
     contact_details = request.form["contact_details"]
-    vetenarian  = vet_repository.select(request.form["vetenarian_id"])
+    vetenarian  = vetenarian_repository.select(request.form["vetenarian_id"])
 
     # make new instance of a Customer using data as constructor values
 

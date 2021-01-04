@@ -1,9 +1,9 @@
 from db.run_sql import run_sql
 
 from models.animal import Animal
-from models.vet import Vetenarian
+from models.vetenarian import Vetenarian
 from models.customer import Customer
-import repositories.vet_repository as vet_repository
+import repositories.vetenarian_repository as vetenarian_repository
 import repositories.customer_repository as customer_repository
 
 
@@ -40,7 +40,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        vetenarian = vet_repository.select(row['vetenarian_id'])
+        vetenarian = vetenarian_repository.select(row['vetenarian_id'])
         customer = customer_repository.select(row['customer_id'])
         animal = Animal(row['name'], row['dob'], row['animal_type'], row['contact_details'], row['notes'], vetenarian, customer, row['id'])
         animals.append(animal)
