@@ -13,26 +13,28 @@
 
     /* BASE */
 
-          /* HEADER */
+    /* HEADER */
 
-          header > .animal-header {
-            font: oblique bold 1200;
-          }
+    header > .menu-header {
+      font: oblique bold 1200;
+    }
 
-          header div {
-            display: block;
-            width: 100px;
-            background-color: orange;
-            list-style-type: none;
-            margin: 0;
-            padding: 5px;
-          }
+    /* NAV */
 
-          .header {
-            font: 50px bold;
-            text-align: center;
-            font-family: 'Fugaz One', cursive;
-          }
+    nav div {
+      display: block;
+      width: 100px;
+      background-color: orange;
+      list-style-type: none;
+      margin: 0;
+      padding: 5px;
+    }
+
+    .header {
+      font: 50px bold;
+      text-align: center;
+      font-family: 'Fugaz One', cursive;
+    }
     
     /* HOME */
 
