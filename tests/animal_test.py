@@ -7,5 +7,19 @@ class TestAnimal(unittest.TestCase):
 
     # testing for type of animal by referring to relevant object attribute.
 
-    def test_is_type(self):
+    def test_animal_is_type(self):
         self.assertEqual(self.animal.type, "Dog")
+    
+    # def test_animal_has_no_type
+
+    # def test_animal_has_name
+
+    # def test_animal_has_no_name
+
+    # def test_animal_has_birthday
+
+    # def test_animal_has_no_birthday
+
+    # def test_animal_has_notes
+
+    # def test_animal_entry_contains_no_notes

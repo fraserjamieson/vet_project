@@ -46,20 +46,20 @@ def update(customer):
     run_sql(sql, values)
 
 def display_customer_animals(id):
-customer_animals = []
-sql = """SELECT *
-        FROM animals
-        WHERE customer_id = %s"""
-values = [id]
-results = run_sql(sql, values)
-customer = customer_repository.select(id)
-for result in results:
-    animals =  Animal(
-    result ["name"],
-    result ["dob"], 
-    result ["animal_type"], 
-    result["notes"],
-    customer, 
-    result ["id"])
-    customer_animals.append(animals)
-return customer_animals
+    customer_animals = []
+    sql = """SELECT *
+            FROM animals
+            WHERE customer_id = %s"""
+    values = [id]
+    results = run_sql(sql, values)
+    customer = customer_repository.select(id)
+    for result in results:
+        animals =  Animal(
+        result ["name"],
+        result ["dob"], 
+        result ["animal_type"], 
+        result["notes"],
+        customer, 
+        result ["id"])
+        customer_animals.append(animals)
+    return customer_animals

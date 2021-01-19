@@ -24,7 +24,8 @@
 
       <div>
           <label for="contact_details">Owner Contact Number</label>
-          <input type="text" id="contact_details" name="contact_details" placeholder="write literally" required>
+          <input type="text" id="contact_details" name="contact_details" placeholder="write literally" required>  
+          <!-- REGISTERING ANIMAL SHOULD ALLOW FOR ADDITIONAL REGISTERING OF CUSTOMER. OR, NOTIFY IT CANT BE DONE WITHOUT REGSITERING ONE SEPERATELY FIRST -->
       </div>
 
       <div>
@@ -36,18 +37,9 @@
           <label for="customer">Owner of animal</label>
           <select id="customer" name="customer_id">
             {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for customer assignment -->
-              <option value="{{ customer.id }}">{{ customer.name }}</option> 
+              <p>{{ customer.name }}</p>
             {% endfor %} 
         </select>      
-      </div>
-    
-      <div>
-        <label for="vetenarian">Assigned Practice</label>
-          <select id="vetenarian" name="vetenarian_id">
-            {% for vetenarian in all_vetenarians %} <!-- LOOP to generate HTML option elements for vet assignment -->
-              <option value="{{ vetenarian.id }}">{{ vetenarian.name }}</option> 
-            {% endfor %} 
-          </select>        
       </div>
     
       <input type="submit"></button>

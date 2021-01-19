@@ -6,11 +6,12 @@ import repositories.customer_repository as customer_repository
 
 
 # CRUD operations 
+
 # create 
 
 def save(animal):
-    sql = "INSERT INTO animals (name, dob, animal_type, contact_details, notes, vetenarian_id, customer_id) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *"
-    values = [animal.name, animal.dob, animal.animal_type, animal.contact_details, animal.notes, animal.vetenarian.id, animal.customer.id]
+    sql = "INSERT INTO animals (name, dob, animal_type, notes, customer_id) VALUES (%s, %s, %s, %s, %s) RETURNING *"
+    values = [animal.name, animal.dob, animal.animal_type, animal.notes, animal.customer.id]
     results = run_sql(sql, values)
     animal.id = results[0]['id']
     return animal
@@ -24,9 +25,8 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        vetenarian = vet_repository.select(result['vetenarian_id'])
         customer = customer_repository.select(result['customer_id'])
-        animal = Animal(result['name'], result['dob'], result['animal_type'],result['contact_details'], result['notes'], vetenarian, customer, result['id'])
+        animal = Animal(result['name'], result['dob'], result['animal_type'], result['notes'], customer, result['id'])
     return animal
 
 # select all 
@@ -38,9 +38,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        vetenarian = vetenarian_repository.select(row['vetenarian_id'])
         customer = customer_repository.select(row['customer_id'])
-        animal = Animal(row['name'], row['dob'], row['animal_type'], row['contact_details'], row['notes'], vetenarian, customer, row['id'])
+        animal = Animal(row['name'], row['dob'], row['animal_type'], row['notes'], customer, row['id'])
         animals.append(animal)
     return animals
 
@@ -60,29 +59,7 @@ def delete_all():
 # update (one)
 
 def update(animal):
-    sql = "UPDATE animals SET (name, dob, animal_type, contact_details, notes, vetenarian_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [animal.name, animal.dob, animal.animal_type, animal.contact_details, animal.notes, animal.vetenarian.id, animal.id]
+    sql = "UPDATE animals SET (name, dob, animal_type, notes) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [animal.name, animal.dob, animal.animal_type, animal.notes, animal.id]
     print(values)
     run_sql(sql, values)
-
-def display_vet_animals(id):
-    vet_animals = []
-    sql = """SELECT *
-            FROM animals
-            WHERE vetenarian_id = %s"""
-    values = [id]
-    results = run_sql(sql, values)
-    vetenarian = vet_repository.select(id)
-    customer = customer_repository.select(id)
-    for result in results:
-        animals =  Animal(
-        result ["name"],
-        result ["dob"], 
-        result ["animal_type"], 
-        result ["contact_details"],
-        result["notes"],
-        vetenarian,
-        customer, 
-        result ["id"])
-        vet_animals.append(animals)
-    return vet_animals

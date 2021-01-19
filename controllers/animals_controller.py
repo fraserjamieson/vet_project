@@ -9,7 +9,7 @@ animals_blueprint = Blueprint("animals", __name__)
 
 # INDEX
 
-# GET list of animals at all vetenarian practices
+# GET list of animals at practice
 
 @animals_blueprint.route("/animals", methods=['GET'])
 def animals():
@@ -17,17 +17,16 @@ def animals():
     customers = customer_repository.select_all()
     return render_template("/animals/index.html", all_animals = animals, all_customers = customers)
 
-# NEW animal link to assign with vetenarian practice
+# NEW animal link to assign
 
 @animals_blueprint.route("/animals/new", methods=['GET'])
 def new_animal():
-    vetenarians = vet_repository.select_all()
     customers = customer_repository.select_all()
-    return render_template("/animals/new.html", all_vetenarians = vetenarians, all_customers = customers)
+    return render_template("/animals/new.html", all_customers = customers)
 
 # CREATE 
 
-# REGISTER new animal on this link
+# REGISTER new animal with given link
 
 @animals_blueprint.route("/animals/new", methods=['POST'])
 def create_animal():
@@ -36,8 +35,7 @@ def create_animal():
     animal_type = request.form["animal_type"]
     notes = request.form["notes"]
     customer = customer_repository.select(request.form["customer_id"])
-    vetenarian = vet_repository.select(request.form["vetenarian_id"])
-    animal = Animal(name, dob, animal_type, notes, vetenarian, customer)
+    animal = Animal(name, dob, animal_type, notes, customer)
     animal_repository.save(animal)
     return redirect("/animals") 
 
@@ -46,11 +44,10 @@ def create_animal():
 @animals_blueprint.route("/animals/<id>/edit")
 def edit_animal(id):
     animal = animal_repository.select(id)
-    vetenarians = vet_repository.select_all()
     customers = customer_repository.select_all()
     return render_template("/animals/edit.html", title= "Edit Animal", animal = animal, all_vetenarians = vetenarians, all_customers = customers)
 
-# UPDATE animal on link given
+# actual UPDATE of animal entry on link given
 
 @animals_blueprint.route("/animals/<id>/edit", methods=["POST"])
 def update_animal(id):

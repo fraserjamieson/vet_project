@@ -18,11 +18,11 @@ def customers():
 
 # NEW customer
 
-@customers_blueprint.route("/customers/new", methods=['GET'])
+@customers_blueprint.route("/add-customers", methods=['GET'])
 def new_customer():
     vetenarians = vetenarian_repository.select_all()
     customers = customer_repository.select_all()
-    return render_template("/customers/new.html", all_customers = customers)
+    return render_template("/customers/new.html", all_animals = animals, all_customers = customers)
 
 # CREATE 
 
