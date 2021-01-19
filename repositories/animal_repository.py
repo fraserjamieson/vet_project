@@ -7,7 +7,7 @@ import repositories.customer_repository as customer_repository
 
 # CRUD operations 
 
-# create 
+# Create 
 
 def save(animal):
     sql = "INSERT INTO animals (name, dob, animal_type, notes, customer_id) VALUES (%s, %s, %s, %s, %s) RETURNING *"
@@ -16,7 +16,7 @@ def save(animal):
     animal.id = results[0]['id']
     return animal
 
-# select
+# Select
 
 def select(id):
     animal = None
@@ -29,7 +29,7 @@ def select(id):
         animal = Animal(result['name'], result['dob'], result['animal_type'], result['notes'], customer, result['id'])
     return animal
 
-# select all 
+# Select all 
 
 def select_all():
     animals = []
@@ -43,20 +43,20 @@ def select_all():
         animals.append(animal)
     return animals
 
-# delete
+# Delete
 
 def delete(id):
     sql = "DELETE FROM animals WHERE id = %s"
     values = [id]
     run_sql(sql, values)
 
-# delete all
+# Delete all
 
 def delete_all():
     sql = "DELETE FROM animals"
     run_sql(sql)
 
-# update (one)
+# Update (one)
 
 def update(animal):
     sql = "UPDATE animals SET (name, dob, animal_type, notes) = (%s, %s, %s, %s) WHERE id = %s"

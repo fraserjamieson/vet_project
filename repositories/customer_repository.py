@@ -52,7 +52,7 @@ def display_customer_animals(id):
             WHERE customer_id = %s"""
     values = [id]
     results = run_sql(sql, values)
-    customer = customer_repository.select(id)
+    # customer = customer_repository.select(id)
     for result in results:
         animals =  Animal(
         result ["name"],

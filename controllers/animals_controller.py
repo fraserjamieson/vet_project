@@ -45,7 +45,7 @@ def create_animal():
 def edit_animal(id):
     animal = animal_repository.select(id)
     customers = customer_repository.select_all()
-    return render_template("/animals/edit.html", title= "Edit Animal", animal = animal, all_vetenarians = vetenarians, all_customers = customers)
+    return render_template("/animals/edit.html", title= "Edit Animal", animal = animal, all_customers = customers)
 
 # actual UPDATE of animal entry on link given
 
@@ -56,12 +56,11 @@ def update_animal(id):
     dob = request.form["dob"]
     animal_type = request.form["animal_type"]
     notes = request.form["notes"]
-    vetenarian  = vet_repository.select(request.form["vetenarian_id"])
     customer = customer_repository.select(request.form["customer_id"])
 
     # make new instance of an Animal using data as constructor values
 
-    animal = Animal(name, dob, animal_type, notes, vetenarian, customer)
+    animal = Animal(name, dob, animal_type, notes, customer)
     
     # add this new animal object to animal list
     animal_repository.save(animal)

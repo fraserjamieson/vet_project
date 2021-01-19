@@ -9,22 +9,24 @@ customers_blueprint = Blueprint("customers", __name__)
 
 # INDEX
 
-# GET list of customers
+# GET list of customers and their animals
 
 @customers_blueprint.route("/customers", methods=['GET'])
 def customers():
     customers = customer_repository.select_all()
+    # customers_animals = customer_repository.display_customer_animals(id)
+    animals = animal_repository.select_all()
     return render_template("/customers/index.html", all_animals = animals, all_customers = customers)
+
+
+# CREATE 
 
 # NEW customer
 
 @customers_blueprint.route("/add-customers", methods=['GET'])
 def new_customer():
-    vetenarians = vetenarian_repository.select_all()
     customers = customer_repository.select_all()
-    return render_template("/customers/new.html", all_animals = animals, all_customers = customers)
-
-# CREATE 
+    return render_template("/customers/new.html", all_customers = customers)
 
 # REGISTER new customer
 

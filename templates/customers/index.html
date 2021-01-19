@@ -3,42 +3,33 @@
 
     <header class="header">CUSTOMERS</header> 
 
-        {% for customers in all_customers %}
-        <h5 class="vet-name-header"> {{ customer.name }}</h2>
-        <h6> {{ customer.contact_details }}</h6>
-                <section class="customer-items">
+        {% for customer in all_customers %}
 
-                <!-- {% for animal in all_animals %} -->
+            <h5 class="vet-name-header"> {{ customer.name }}</h5>
+            <h6> {{ customer.contact_details }}</h6>
 
-                    {% if animal.customer.id == customer.id %}
-                    
-                        <div class="vet-items">
+                    <section class="customer-items">
+                        {% for animal in all_animals %}
+                            {% if animal.customer.id == customer.id %}
+                            
+                                <div class="vet-items">
+                                    <div class="vet-item-padding">
+                                        <p>Name: {{ animal.name }} <br>
+                                        DoB: {{ animal.dob }}<br>
+                                        Type: {{ animal.animal_type }} <br>
 
-                            <div class="vet-item-padding">
+                                        <p class="notes">Notes: {{ animal.notes }}</p>
+                                            <br>
+                                        
+                                        <form action="/animals/{{ animal.id }}/edit" method="GET">
+                                            <input type="submit" value="Change Details">
+                                        </form> <br><br>
+                                    </div>
+                                </div>
 
-                                <p>Name: {{ customer.animal.name }} <br>
-                                DoB: {{ customer.animal.dob }}<br>
-                                Type: {{ customer.animal.animal_type }} <br>
-
-                                <p class="notes">Notes: {{ customer.animal.notes }}</p>
-                                    <br>
-                                
-                                <form action="/animals/{{ animal.id }}/edit" method="GET">
-                                    <input type="submit" value="Change Details">
-                                </form> <br><br>
-
-                                <form action="/vets/{{ animal.id }}/delete" method="POST">
-                                    <input type="submit" value="Delete">
-                                </form> 
-
-                            </div>
-                        </div>
-
-                    {% endif %}   
-
-                {% endfor %}   
-                
-                </section>
+                            {% endif %}   
+                        {% endfor %}   
+                    </section>
 
         {% endfor %} 
 
