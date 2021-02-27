@@ -6,28 +6,19 @@
   <section class="edit-page">
 
       <form action="/animals/{{ animal.id }}/edit" method="post" class="edit-animal-form" id="usrform">
-
-        <div>
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" value="{{ animal.name }}" required autofocus>
-        </div>
-      
-        <div>
+    
           <label for="dob">D/O/B:</label>
           <input type="date" id="dob" name="dob" value="{{ animal.dob }}" required>
-        </div>
-      
-        <div>
+    
           <label for="animal_type">Type:</label>
           <input type="text" id="animal_type" name="animal_type" value="{{ animal.animal_type }}"  required>
-        </div>
-
-        <div>
+  
             <label for="notes" class="noteslabel">Notes:</label>
             <textarea name="notes" rows="5" cols="20" id="notes" value="{{ animal.notes }}"  required></textarea>
-        </div>
       
-        <div>
+        <!-- 
           <label for="vetenarian">Assign Vet:</label>
             <select id="vetenarian" name="vetenarian_id">
               {% for vetenarian in all_vetenarians %}
@@ -37,10 +28,8 @@
                 </option>
 
               {% endfor %}
-            </select>
-        </div>
+            </select> -->
 
-        <div>
           <label for="customer">Owner:</label>
             <select id="customer" name="customer_id">
               {% for customer in all_customers %}
@@ -50,7 +39,6 @@
                 </option>
               {% endfor %}
             </select>
-        </div>
       
         <input type="submit"></button>
       

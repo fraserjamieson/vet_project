@@ -23,10 +23,10 @@ def customers():
 
 # NEW customer
 
-@customers_blueprint.route("/add-customers", methods=['GET'])
+@customers_blueprint.route("/customers/new", methods=['GET'])
 def new_customer():
     customers = customer_repository.select_all()
-    return render_template("/customers/new.html", all_customers = customers)
+    return render_template("/customers/new.html", all_customers = customers, title='Customers')
 
 # REGISTER new customer
 
@@ -34,9 +34,9 @@ def new_customer():
 def create_customer():
     name = request.form["name"]
     contact_details = request.form["contact_details"]
-    customer = customer_repository.select(request.form["customer_id"])
-    customer = Customer(name, contact_details)
-    customer_repository.save(customer)
+    # customer = customer_repository.select(request.form["customer_id"])
+    newCustomer = Customer(name, contact_details)
+    customer_repository.save(newCustomer)
     return redirect("/customers") 
 
 # EDIT 

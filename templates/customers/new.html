@@ -5,21 +5,23 @@
 
   <div class="form-body">
 
-    <form action="/vets/new" method="post" class="form-submission">
+    <form action="/customers/new" method="post" class="form-submission">
       
       <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Name here" required autofocus>
+        <label for="contact_details">Contact Number</label>
+        <input type="text" id="contact_details" name="contact_details">
       </div>
     
-      <div>
+      <!-- <div>
         <label for="vetenarian">Assign Practice</label>
           <select id="vetenarian" name="vetenarian_id">
-            {% for vetenarian in all_vetenarians %} <!-- LOOP to generate HTML option elements for vet assignment -->
-              <option value="{{ vetenarian.id }}">{{ vetenarian.name }}</option> 
+            {% for vetenarian in all_vetenarians %} LOOP to generate HTML option elements for vet assignment -->
+              <!-- <option value="{{ vetenarian.id }}">{{ vetenarian.name }}</option> 
             {% endfor %} 
-          </select>        
-      </div>
+          </select>         -->
+      <!-- </div> -->
     
       <button type="submit">Submit</button>
     

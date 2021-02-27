@@ -7,35 +7,27 @@
 
     <form action="/animals/new" method="post" class="form-submission">
       
-      <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Name here" required autofocus>
-      </div>
     
-      <div>
         <label for="dob">D/O/B</label>
         <input type="date" id="dob" name="dob" required>
-      </div>
     
-      <div>
         <label for="animal_type">Type</label>
         <input type="text" id="animal_type" name="animal_type" placeholder="write literally" required>
-      </div>
 
-      <div>
-          <label for="notes">Introductory Notes</label>
-          <input type="text" id="notes" name="notes">
-      </div>
+        <label for="notes">Introductory Notes</label>
+        <input type="text" id="notes" name="notes">
 
-      <div>
-          <label for="customer">Owner of animal</label>
-            <select id="customer" name="customer_id">
-              {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for customer assignment -->
-                <p>{{ customer.name }}</p>
-              {% endfor %} 
-            </select>      
-          <!-- REGISTERING ANIMAL WILL SHOW CUSTOMER DROPDOWN, IF NOT CHOSEN NOTIFY IT CANT BE DONE WITHOUT REGSITERING ONE SEPERATELY FIRST--HOW DO I DO THIS? -->
-      </div>
+        <label for="customer">Owner of animal</label>
+          <select id="customer_id" name="customer">
+
+            {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for customer assignment -->
+              <p>{{ customer.name }}</p>
+            {% endfor %} 
+
+          </select>      
+        <!-- REGISTERING ANIMAL WILL SHOW CUSTOMER DROPDOWN, IF NOT CHOSEN NOTIFY IT CANT BE DONE WITHOUT REGSITERING ONE SEPERATELY FIRST--HOW DO I DO THIS? -->
     
       <input type="submit"></button>
     

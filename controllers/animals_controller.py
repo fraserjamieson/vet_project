@@ -22,7 +22,7 @@ def animals():
 @animals_blueprint.route("/animals/new", methods=['GET'])
 def new_animal():
     customers = customer_repository.select_all()
-    return render_template("/animals/new.html", all_customers = customers)
+    return render_template("/animals/new.html", all_customers = customers, title='Animals')
 
 # CREATE 
 
@@ -30,6 +30,7 @@ def new_animal():
 
 @animals_blueprint.route("/animals/new", methods=['POST'])
 def create_animal():
+    print(request.form)
     name = request.form["name"]
     dob = request.form["dob"]
     animal_type = request.form["animal_type"]
