@@ -3,6 +3,7 @@ from controllers.animals_controller import animals_blueprint
 from controllers.customers_controller import customers_blueprint
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 app.register_blueprint(animals_blueprint)
 app.register_blueprint(customers_blueprint)

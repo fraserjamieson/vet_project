@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, redirect, request
+from flask import Flask, flash, render_template, Blueprint, redirect, request
 from models.animal import Animal
 from models.customer import Customer
 import repositories.animal_repository as animal_repository
@@ -32,11 +32,15 @@ def new_customer():
 
 @customers_blueprint.route("/customers/new", methods=['POST'])
 def create_customer():
+
     name = request.form["name"]
     contact_details = request.form["contact_details"]
     # customer = customer_repository.select(request.form["customer_id"])
     newCustomer = Customer(name, contact_details)
     customer_repository.save(newCustomer)
+
+    flash("New customer registered!")
+
     return redirect("/customers") 
 
 # EDIT 

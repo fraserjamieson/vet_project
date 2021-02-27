@@ -26,7 +26,7 @@ def new_animal():
 
 # CREATE 
 
-# REGISTER new animal with given link
+# actual REGISTER new animal with given link
 
 @animals_blueprint.route("/animals/new", methods=['POST'])
 def create_animal():

@@ -5,8 +5,8 @@ from models.customer import Customer
 import repositories.animal_repository as animal_repository
 import repositories.customer_repository as customer_repository
 
-# animal_repository.delete_all()
-# customer_repository.delete_all()
+animal_repository.delete_all()
+customer_repository.delete_all()
 
 muran = Customer("Muran Battison", "07957941877")
 customer_repository.save(muran)

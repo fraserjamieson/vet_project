@@ -19,13 +19,14 @@
         <label for="notes">Introductory Notes</label>
         <input type="text" id="notes" name="notes">
 
-        <label for="customer">Owner of animal</label>
-          <select id="customer_id" name="customer">
-
+        <label for="customer">Owner</label>
+          <select id="customer" name="customer_id">
             {% for customer in all_customers %} <!-- LOOP to generate HTML option elements for customer assignment -->
-              <p>{{ customer.name }}</p>
+            <option value="{{ customer.id }}"
+              >
+              {{ customer.name }}
+              </option>
             {% endfor %} 
-
           </select>      
         <!-- REGISTERING ANIMAL WILL SHOW CUSTOMER DROPDOWN, IF NOT CHOSEN NOTIFY IT CANT BE DONE WITHOUT REGSITERING ONE SEPERATELY FIRST--HOW DO I DO THIS? -->
     
