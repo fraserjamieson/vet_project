@@ -34,7 +34,7 @@ def select(id):
 def select_all():
     animals = []
 
-    sql = "SELECT * FROM animals"
+    sql = "SELECT * FROM animals ORDER by name"
     results = run_sql(sql)
 
     for row in results:

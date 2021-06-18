@@ -4,20 +4,21 @@ from models.animal import Animal
 import repositories.animal_repository as animal_repository
 
 def save(customer):
-    sql = "INSERT INTO customers (name, contact_details) VALUES (%s, %s) RETURNING *"
-    values = [customer.name, customer.contact_details]
+    sql = "INSERT INTO customers (name, contact_details, registered) VALUES (%s, %s, %s) RETURNING *"
+    values = [customer.name, customer.contact_details, customer.registered]
     results = run_sql(sql, values)
-    customer.id = results[0]['id']
+    id = results[0]['id']
+    customer.id = id
     return customer
-    
+
 def select_all():
     customers = []
 
-    sql = "SELECT * FROM customers"
+    sql = "SELECT * FROM customers ORDER by name"
     results = run_sql(sql)
 
     for row in results:
-        customer = Customer(row["name"],row["contact_details"], row["id"])
+        customer = Customer(row["name"],row["contact_details"],row["registered"], row["id"])
         customers.append(customer)
     return customers
 
@@ -28,7 +29,7 @@ def select(id):
     result = run_sql(sql, values)[0]
    
     if result is not None:
-        customer = Customer(result['name'], result['contact_details'], result['id'])
+        customer = Customer(result['name'], result['contact_details'], result['registered'], result['id'])
     return customer 
 
 def delete_all():
@@ -37,29 +38,29 @@ def delete_all():
 
 def delete(id):
     sql = "DELETE FROM customers WHERE id = %s"
-    vaules = [id]
-    run_sql(sql, vaules)
-
-def update(customer):
-    sql = "UPDATE customers SET (name) = (%s) WHERE id = %s"
-    values = [customer.name, customer.contact_details, customer.id]
+    values = [id]
     run_sql(sql, values)
 
-# def display_customer_animals(id):
-#     customer_animals = []
-#     sql = """SELECT *
-#             FROM animals
-#             WHERE customer_id = %s"""
-#     values = [id]
-#     results = run_sql(sql, values)
-#     # customer = customer_repository.select(id)
-#     for result in results:
-#         animals =  Animal(
-#         result ["name"],
-#         result ["dob"], 
-#         result ["animal_type"], 
-#         result["notes"],
-#         customer, 
-#         result ["id"])
-#         customer_animals.append(animals)
-#     return customer_animals
+def update(customer):
+    sql = "UPDATE customers SET (name, contact_details, registered) = (%s, %s, %s) WHERE id = %s"
+    values = [customer.name, customer.contact_details, customer.registered, customer.id]
+    run_sql(sql, values)
+
+def animals(customer_id):
+    animals = []
+    sql = """SELECT *
+            FROM animals
+            WHERE customer_id = %s"""
+    values = [customer.id]
+    results = run_sql(sql, values)
+
+    for result in results:
+        animal =  Animal(
+        result ["name"],
+        result ["dob"], 
+        result ["animal_type"], 
+        result["notes"],
+        customer, 
+        result ["id"])
+        animals.append(animal)
+    return animals

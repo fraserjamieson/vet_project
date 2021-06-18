@@ -8,10 +8,26 @@ import repositories.customer_repository as customer_repository
 animal_repository.delete_all()
 customer_repository.delete_all()
 
-muran = Customer("Muran Battison", "07957941877")
+muran = Customer("Muran Battison", "07957941877", False)
 customer_repository.save(muran)
 
 zero = Animal("Zero", "13/10/2018", "Dog", "Visited to recieve yearly jab", muran)
 animal_repository.save(zero)
+bill = Animal("Bill", "13/10/2018", "Dog", "Visited to recieve yearly jab", muran)
+animal_repository.save(bill)
+lila = Animal("Lila", "13/10/2018", "Dog", "Visited to recieve yearly jab", muran)
+animal_repository.save(lila)
+
+res = customer_repository.select_all()
+res2= animal_repository.select_all()
+
+for customer in res:
+    print(customer.__dict__)
+
+muran.registered_with_vet()
+customer_repository.update(muran)
 
 pdb.set_trace()
+
+
+
