@@ -1,48 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="edit-header">EDIT ENTRY</h1>
+<h1 class="edit-header">CHANGE ANIMAL DETAILS</h1>
 
   <section class="edit-page">
 
-      <form action="/animals/{{ animal.id }}/edit" method="post" class="edit-animal-form" id="usrform">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" value="{{ animal.name }}" required autofocus>
-    
-          <label for="dob">D/O/B:</label>
-          <input type="date" id="dob" name="dob" value="{{ animal.dob }}" required>
-    
-          <label for="animal_type">Type:</label>
-          <input type="text" id="animal_type" name="animal_type" value="{{ animal.animal_type }}"  required>
+    <form action="/animals/{{ animal.id }}/edit" method="post" class="edit-animal-form" id="usrform">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ animal.name }}" required autofocus>
   
-            <label for="notes" class="noteslabel">Notes:</label>
-            <textarea name="notes" rows="5" cols="20" id="notes" value="{{ animal.notes }}"  required></textarea>
-      
-        <!-- 
-          <label for="vetenarian">Assign Vet:</label>
-            <select id="vetenarian" name="vetenarian_id">
-              {% for vetenarian in all_vetenarians %}
+        <label for="dob">D/O/B:</label>
+        <input type="date" id="dob" name="dob" value="{{ animal.dob }}" required>
+  
+        <label for="animal_type">Type:</label>
+        <input type="text" id="animal_type" name="animal_type" value="{{ animal.animal_type }}"  required>
 
-                <option value="{{ vetenarian.id }}">
-                  {{ vetenarian.name }}
-                </option>
+          <label for="notes" class="noteslabel">Notes:</label>
+          <textarea name="notes" rows="5" cols="20" id="notes" value="{{ animal.notes }}"  required></textarea>
 
-              {% endfor %}
-            </select> -->
+        <label for="customer">Owner:</label>
+          <select id="customer" name="customer_id">
+            {% for customer in all_customers %}
 
-          <label for="customer">Owner:</label>
-            <select id="customer" name="customer_id">
-              {% for customer in all_customers %}
-
-                <option value="{{ customer.id }}">
-                  {{ customer.name }}
-                </option>
-              {% endfor %}
-            </select>
-      
-        <input type="submit"></button>
-      
-      </form>
+              <option value="{{ customer.id }}">
+                {{ customer.name }}
+              </option>
+            {% endfor %}
+          </select>
+    
+      <input type="submit"></button>
+    
+    </form>
 
   </section>
 

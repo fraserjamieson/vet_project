@@ -2,27 +2,27 @@
 {% block content %}
 
     <header class="header">ANIMALS</header> 
-            <section class="pet-container">
-                {% for animal in all_animals %}
+    <section class="pet-container">
+        {% for animal in all_animals %}
 
-                    <div class="animal-items">
+            <div class="animal-items">
 
-                        <p>Name: {{ animal.name }}</a></p>
-                        <p>DoB: {{ animal.dob }}</p>
-                        <p>Type: {{ animal.animal_type }}</p>
-                        <p class="notes">Notes: {{ animal.notes }}</p>
-                        <p>Registered to: {{ animal.customer.name }}</p><br>
+                <p>Name: {{ animal.name }}</a></p>
+                <p>DoB: {{ animal.dob }}</p>
+                <p>Type: {{ animal.animal_type }}</p>
+                <p class="notes">Notes: {{ animal.notes }}</p>
+                <p>Registered to: {{ animal.customer.name }}</p><br>
 
-                        <form action="/animals/{{ animal.id }}/edit" method="GET" class="firstbutton">
-                            <input type="submit" value="Change Details">
-                        </form> 
-                        <form action="/animals/{{ animal.id }}/delete" method="POST" class="button">
-                            <input type="submit" value="Delete">
-                        </form> 
+                <form action="/animals/{{ animal.id }}/edit" method="GET" class="firstbutton">
+                    <input type="submit" value="Change Details">
+                </form> 
+                <form action="/animals/{{ animal.id }}/delete" method="POST" class="button">
+                    <input type="submit" value="Delete">
+                </form> 
 
-                    </div>
+            </div>
 
-                {% endfor %}  
-            </section>  
+        {% endfor %}  
+    </section>  
 
 {% endblock %}

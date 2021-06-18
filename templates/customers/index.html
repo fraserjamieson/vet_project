@@ -3,55 +3,53 @@
 
     <div class="header">CUSTOMERS</div> 
 
-        {% for customer in all_customers %}
+    {% for customer in all_customers %}
 
-            <h5 class="vet-name-header"> {{ customer.name }}
-            <p> {{ customer.contact_details }}</p> 
-            <form action="/customers/{{ customer.id }}/edit" method="GET" class="button">
-                <input type="submit" value="Change Customer Details">
-            </form> 
-            <form action="/customers/{{ customer.id }}/delete" method="POST" class="button">
-                <input type="submit" value="Remove and delete this customer">
-            </form> 
-            </h5>
-            <!-- form input to sent DELETE request to DB -->
+    <h5 class="vet-name-header"> {{ customer.name }}
+    <p> {{ customer.contact_details }}</p> 
+    <form action="/customers/{{ customer.id }}/edit" method="GET" class="button">
+        <input type="submit" value="Change Customer Details">
+    </form> 
+    <form action="/customers/{{ customer.id }}/delete" method="POST" class="button">
+        <input type="submit" value="Remove and delete this customer">
+    </form> 
+    </h5>
+
+    <section class="customer-items">
+        {% for animal in all_animals %}
+            {% if animal.customer.id == customer.id %}
             
+                <div class="vet-items">
+                    <div class="vet-item-padding">
+                        <p>Name: {{ animal.name }} <br>
+                        DoB: {{ animal.dob }}<br>
+                        Type: {{ animal.animal_type }} <br>
 
-            <section class="customer-items">
-                {% for animal in all_animals %}
-                    {% if animal.customer.id == customer.id %}
-                    
-                        <div class="vet-items">
-                            <div class="vet-item-padding">
-                                <p>Name: {{ animal.name }} <br>
-                                DoB: {{ animal.dob }}<br>
-                                Type: {{ animal.animal_type }} <br>
-
-                                <p class="notes">Notes: {{ animal.notes }}</p>
-                                    <br>
-                                
-                                <form action="/animals/{{ animal.id }}/edit" method="GET">
-                                    <input type="submit" value="Change Details">
-                                </form> <br><br>
-                            </div>
-                        </div>
-
-                        {% else %}
-                        <div class="vet-items">
-                            <div> This customer has no animals!
-                                <form action="/animals/new" method="POST">
-                                    <input type="submit" value="Register an animal with this customer">
-                                </form> <br><br>
-                            </div>
-    
-                        </div>
-                    {% endif %}  
- 
-                 
+                        <p class="notes">Notes: {{ animal.notes }}</p>
+                            <br>
                         
-                {% endfor %}   
-            </section>
+                        <form action="/animals/{{ animal.id }}/edit" method="GET">
+                            <input type="submit" value="Change Details">
+                        </form> <br><br>
+                    </div>
+                </div>
 
-        {% endfor %} 
+                {% else %}
+                <div class="vet-items">
+                    <div> This customer has no animals!
+                        <form action="/animals/new" method="POST">
+                            <input type="submit" value="Register an animal with this customer">
+                        </form> <br><br>
+                    </div>
+
+                </div>
+            {% endif %}  
+
+            
+                
+        {% endfor %}   
+    </section>
+
+    {% endfor %} 
 
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, flash, render_template, Blueprint, redirect, request
+from flask import flash, render_template, Blueprint, redirect, request
 from models.animal import Animal
 from models.customer import Customer
 import repositories.animal_repository as animal_repository
@@ -48,7 +48,7 @@ def create_customer():
 @customers_blueprint.route("/customers/<id>/edit")
 def edit_customer(id):
     customer = customer_repository.select(id)
-    animals = animal_repository.select.all()
+    animals = animal_repository.select_all()
     return render_template("/customers/edit.html", title= "Edit Customer", customer = customer, all_animals = animals)
 
 # UPDATE

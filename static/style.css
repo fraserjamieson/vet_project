@@ -197,6 +197,7 @@
           
           .edit-page {
             display: flex;
+            flex-flow: row wrap;
             justify-content: center;
             align-items: center;
             height: 80%;
@@ -205,17 +206,92 @@
             margin: 0 auto;
           }
 
-          .edit-animal-form {
-            margin: 60px auto;
-            background-color: #efefef;
+          .form {
+            margin: 20px;
+           float: left;
+           background-color: #efefef;
             padding: 60px 120px 80px 120px;
             box-shadow: 4px 5px 3px rgba(0,0,0,0.1);
           }
 
-          .edit-animal-form > div {
-            padding: 2px;
+          form > div {
+            overflow: hidden;
+            border: 1px solid blueviolet;
+            position: relative;
           }
 
-          .noteslabel {
-            float: left;
+          form > div > label {
+            position: absolute;
           }
+
+          form.edit-animal-form label {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            transition: 0.2s;
+          }
+
+          form.edit-animal-form input {
+            padding: 12px 12px 12px 12px; 
+          }
+
+          form.edit-animal-form label {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+          }
+
+          input:focus, textarea:focus {
+            padding: 4px 6px 20px 6px;
+          }
+
+          input:focus + label, textarea:focus + label {
+            top: 100%;
+            margin-top: -16px;
+          }
+
+          form.edit-animal-form input:focus + label {
+            top: 100%;
+            margin-top: -16px;
+            background: #f06d06;
+            color: white;
+            font-size: 70%;
+            padding: 1px 6px;
+            z-index: 2;
+            text-transform: uppercase;
+          }
+
+          form input:valid{
+            background: white;
+          }
+
+          form input {
+            width: auto;
+            border: 2px solid gray; 
+            background: none;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            padding: 8px 12px;
+            outline: 0;
+          }
+
+          form textarea {
+            width: 100%;
+            border: 2px solid gray; 
+            background: none;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            padding: 8px 12px;
+            outline: 0;
+          }
+
+          /* .noteslabel {
+            float: left;
+          } */

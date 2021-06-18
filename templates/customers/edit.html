@@ -1,2 +1,26 @@
-{% block base.html %}
-{ % endblock % }
+{% extends "base.html" %}
+{% block content  %}
+
+<h1 class="edit-header">CHANGE CUSTOMER DETAILS</h1>
+
+  <section class="edit-page">
+
+    <form action ="/customers/{{ customer.id }}/edit" method="post" class="edit-animal-form">
+
+      <div>
+      <input type="text" name="name" class="first" required>
+      <label for="name">Name</label>
+     </div>
+
+     <div>
+      <input name="contact_details" class="last" type="text" required></input>
+      <label for="contact_details">Contact:</label>
+      <input type="submit">
+    </div>
+
+    </form>
+
+
+    </section>
+
+{% endblock %}

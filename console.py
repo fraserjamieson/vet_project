@@ -8,7 +8,7 @@ import repositories.customer_repository as customer_repository
 animal_repository.delete_all()
 customer_repository.delete_all()
 
-muran = Customer("Muran Battison", "07957941877", False)
+muran = Customer("Muran Battison", "07957941877")
 customer_repository.save(muran)
 
 zero = Animal("Zero", "13/10/2018", "Dog", "Visited to recieve yearly jab", muran)
@@ -24,7 +24,6 @@ res2= animal_repository.select_all()
 for customer in res:
     print(customer.__dict__)
 
-muran.registered_with_vet()
 customer_repository.update(muran)
 
 pdb.set_trace()

@@ -4,8 +4,8 @@ from models.animal import Animal
 import repositories.animal_repository as animal_repository
 
 def save(customer):
-    sql = "INSERT INTO customers (name, contact_details, registered) VALUES (%s, %s, %s) RETURNING *"
-    values = [customer.name, customer.contact_details, customer.registered]
+    sql = "INSERT INTO customers (name, contact_details) VALUES (%s, %s) RETURNING *"
+    values = [customer.name, customer.contact_details]
     results = run_sql(sql, values)
     id = results[0]['id']
     customer.id = id
@@ -18,7 +18,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        customer = Customer(row["name"],row["contact_details"],row["registered"], row["id"])
+        customer = Customer(row["name"],row["contact_details"], row["id"])
         customers.append(customer)
     return customers
 
@@ -29,7 +29,7 @@ def select(id):
     result = run_sql(sql, values)[0]
    
     if result is not None:
-        customer = Customer(result['name'], result['contact_details'], result['registered'], result['id'])
+        customer = Customer(result['name'], result['contact_details'], result['id'])
     return customer 
 
 def delete_all():
@@ -42,8 +42,8 @@ def delete(id):
     run_sql(sql, values)
 
 def update(customer):
-    sql = "UPDATE customers SET (name, contact_details, registered) = (%s, %s, %s) WHERE id = %s"
-    values = [customer.name, customer.contact_details, customer.registered, customer.id]
+    sql = "UPDATE customers SET (name, contact_details) = (%s, %s) WHERE id = %s"
+    values = [customer.name, customer.contact_details, customer.id]
     run_sql(sql, values)
 
 def animals(customer_id):
